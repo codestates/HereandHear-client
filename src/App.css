@@ -1,38 +1,171 @@
-.App {
-  text-align: center;
+/* font */
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
+/*font-family: 'Nanum Gothic', sans-serif;  */
+* {
+  font-family: 'Nanum Gothic', sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* react-router-dom  : link 관련 css 변경 */
+.textLink {
+  color: inherit;
+  text-decoration: inherit;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+/* Nav */
+.NavOut {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  min-width: 800px;
+  position: fixed;
+  z-index: 999;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.Nav {
+  width: 90%;
+  height: 80px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  color: #fff;
+  font-size: 1rem;
+}
+
+.Nav > ul {
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  cursor: pointer;
+  align-items: center;
+}
+
+.Nav > ul > li {
+  width: 150px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 16px;
+  opacity: 0.4;
+  transition: all 0.4s;
+}
+
+.Nav > ul > li:hover {
+  opacity: 1;
+}
+
+.LogInBtn {
+  color: #fff;
+  width: 100px;
+  height: 30px;
+  cursor: pointer;
+  background-color: #00acee;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  transition: all 0.4s;
+}
+
+.LogInBtn:hover {
+  transform: scale(1.1);
+}
+
+.LogOutBtn {
+  color: #fff;
+  width: 100px;
+  height: 30px;
+  cursor: pointer;
+  background-color: #d21c38;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  transition: all 0.4s;
+}
+.LogOutBtn:hover {
+  transform: scale(1.1);
+}
+
+/* home */
+
+.HomeOut {
+  width: 100%;
+  height: 100vh;
+  z-index: 30;
+  position: relative;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.HomeBackGround {
+  width: 100%;
+  height: 100vh;
+  object-fit: cover;
+  z-index: 1;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.HomeFilter {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: black;
+  opacity: 0.7;
+  z-index: 2;
+  position: absolute;
+}
+
+.HomeContext {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  z-index: 3;
 }
 
-.App-link {
-  color: #61dafb;
+.HomeTitle {
+  color: #fff;
+  font-size: 6rem;
+  font-weight: 700;
+  margin-bottom: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.HomeSubTitle {
+  color: #fff;
+  z-index: 3;
+  font-size: 2.5rem;
+}
+
+/* SignIN */
+
+/* Footer */
+
+.Footer {
+  width: 200px;
+  text-align: center;
+  height: 40px;
+  line-height: 40px;
+  font-size: 0.5rem;
+  color: #000;
+  position: absolute;
+  bottom: 0;
+  z-index: 999;
 }
