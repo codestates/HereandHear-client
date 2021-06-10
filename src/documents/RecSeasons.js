@@ -2,8 +2,8 @@
 // new Date()를 통한 날짜 함수를 만들어서, month에 해당하는 월을 배열로 잘라 해당 계절이 나오도록 추천
 const RecSeasons = [
   {
-    id: 1,
-    introTitle: "SeasonTitle1",
+    id: 6,
+    introTitle: "초여름에 가기 좋은 여행지",
     title: "Sintro1",
     place: "Splace1",
     text: "Stext1",

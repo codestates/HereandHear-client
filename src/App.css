@@ -463,3 +463,66 @@ body {
   z-index: 999;
   transform: translateX(-100px);
 }
+.recommends {
+  color: white;
+  text-align: center;
+  border: solid 4px tomato;
+}
+
+.recBody {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: solid 3px seagreen;
+}
+
+.recButtons {
+  display: flexbox;
+}
+
+.RecWeathers {
+  background-color: black;
+  border: solid 7px darkblue;
+}
+
+.RecSeasons {
+  background-color: black;
+  border: solid 7px orange;
+}
+
+
+
+
+/* 플레이 */
+/* .ContentsPlayer { */
+.View {
+  box-sizing: border-box;
+  width: 100%;
+  color: white;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.ContentsPlayer {
+  border: solid 5px orange;
+  padding: 50px 150px;
+}
+
+.PlayHead {
+  border: solid 5px darkblue;
+  display: flex;
+  padding: 20px 250px;
+  justify-content: space-between;
+}
+
+.PlayBody {
+  border: solid 3px seagreen;
+  padding: 150px 200px;
+}
+
+.PlayTitle {
+  border: solid 4px tomato;
+}
