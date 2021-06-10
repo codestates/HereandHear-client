@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import FavoriteContents from './pages/FavoriteContents';
 import Home from './pages/Home';
-import Mypage from './pages/Mypage';
+// import Mypage from './pages/Mypage';
 import Play from './pages/Play';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
@@ -45,7 +45,7 @@ function App() {
         <Route path="/signup" render={() => <SignUp />} />
         <Route path="/play" render={() => <Play />} />
         <Route path="/favoritecontents" render={() => <FavoriteContents />} />
-        <Route exact path="/" render={() => <Home />} />
+        <Route exact path="/" render={() => <Home isLogin={isLogin}/>} />
         <Route component={NotFound} />
       </Switch>
       <Footer/>

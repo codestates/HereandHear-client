@@ -1,50 +1,50 @@
-import React from 'react';
+import React,{useState}from 'react';
 import Recommends from '../components/Recommends';
 import BackGroundVideo from '../video/background.mp4';
+import axios from 'axios';
 import RecWeathers from '../documents/RecWeathers';
 import RecSeasons from '../documents/RecSeasons';
-import axios from 'axios';
+import { useState } from 'react';
 
+function Home({isLogin}) {
+ 
+  const [weatherNow,setWeatherNow] =useState("")
+  
+  useEffect(()=>{
 
-class Home extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      weatherNow : ''
-    }
-  }
-
-  componentDidMount() {
     const url = 'http://api.openweathermap.org/data/2.5/weather?q=seoul&appid=aa505028cd8fe7825b8749cb42a93954'
 
     axios.get(url)
     .then(res => res.data)
     .then(res => {
       // console.log(res.weather[0].main)
-      this.setState({weatherNow: res.weather[0].main})
-      console.log(this.state.weatherNow)
+      setWeatherNow({weatherNow: res.weather[0].main})
+      console.log(weatherNow)
     })
-  }
 
-  render(){
-    return (
-      <>
-        <div className="HomeOut">
-          <div className="HomeContext">
-            <div className="HomeTitle">Here & Hear</div>
-            <div className="HomeSubTitle">
-              당신이 있는 여기서 듣기만 하면 여행이 시작됩니다.
-            </div>
-          </div>
-          <div className="HomeFilter"></div>
-          <video className="HomeBackGround" autoPlay muted loop>
-            <source src={BackGroundVideo} type="video/mp4"></source>
-          </video>
+  },[])
+
+
+  return (
+    <>
+    <div className="HomeOut">
+      <div className="HomeContext">
+        <div className="HomeTitle">Here & Hear</div>
+        <div className="HomeSubTitle">
+          당신이 있는 여기서 듣기만 하면 여행이 시작됩니다.
         </div>
-      {/* 추천 */}
-      <div className="RecWeathers">
+      </div>
+      <div className="Filter"></div>
+      <video className="BackGround" autoPlay muted loop>
+        <source src={BackGroundVideo} type="video/mp4"></source>
+      </video>
+    </div>
+     {/* 추천 */}
+  {
+    isLogin ?  <>
+     <div className="RecWeathers">
         {RecWeathers.map((weather) => {
-          if(this.state.weatherNow === weather.id ) {
+          if(weatherNow === weather.id ) {
             return (
             <Recommends 
             key={weather.id}
@@ -72,13 +72,11 @@ class Home extends React.Component {
           />
         )}
       </div>
-
-
-
-      </>
-    );
+     </> :
+     <></>
   }
+    </>
+  );
 
 }
-
-export default Home;
+  export default Home;

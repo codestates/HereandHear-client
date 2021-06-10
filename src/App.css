@@ -1,11 +1,24 @@
 /* font */
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
 /*font-family: 'Nanum Gothic', sans-serif;  */
+
+/* 기본설정 */
 * {
   font-family: 'Nanum Gothic', sans-serif;
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+ul {
+  list-style: none;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}
+body {
+  background-color: #000;
 }
 
 /* react-router-dom  : link 관련 css 변경 */
@@ -18,11 +31,21 @@
 .NavOut {
   width: 100%;
   height: 80px;
-  display: flex;
-  justify-content: center;
+  min-height: 80px;
   min-width: 800px;
   position: fixed;
   z-index: 999;
+  animation-name: Landing;
+  animation-duration: 1.5s;
+}
+
+@keyframes Landing {
+  0% {
+    top: -80px;
+  }
+  100% {
+    top: 0px;
+  }
 }
 
 .Nav {
@@ -34,16 +57,15 @@
   align-items: center;
   color: #fff;
   font-size: 1rem;
+  margin: 0 auto;
 }
 
 .Nav > ul {
   margin: 0 auto;
   padding: 0;
-  list-style: none;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  cursor: pointer;
   align-items: center;
 }
 
@@ -74,11 +96,13 @@
   align-items: center;
   justify-content: center;
   font-size: 1rem;
+  letter-spacing: 0.1rem;
   transition: all 0.4s;
 }
 
 .LogInBtn:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
+  letter-spacing: 0.2rem;
 }
 
 .LogOutBtn {
@@ -95,7 +119,8 @@
   transition: all 0.4s;
 }
 .LogOutBtn:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
+  letter-spacing: 0.2rem;
 }
 
 /* home */
@@ -112,24 +137,24 @@
   justify-content: center;
 }
 
-.HomeBackGround {
+.BackGround {
   width: 100%;
   height: 100vh;
   object-fit: cover;
-  z-index: 1;
+  z-index: -2;
   position: absolute;
   top: 0;
   left: 0;
 }
 
-.HomeFilter {
+.Filter {
   top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
   background-color: black;
   opacity: 0.7;
-  z-index: 2;
+  z-index: -1;
   position: absolute;
 }
 
@@ -156,6 +181,272 @@
 
 /* SignIN */
 
+.SignIn {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  min-height: 500px;
+  padding-top: 60px;
+  /* border: 1px solid #d21c38; */
+}
+.SignInUl {
+  /* border: 1px solid #d21c38; */
+  z-index: 6;
+}
+
+.SignInUl > li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  height: 60px;
+  margin-bottom: 30px;
+  position: relative;
+
+  /* border: 1px solid yellow; */
+}
+.SignInUl > li > input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: transparent;
+  border: 1px solid #fff;
+  outline: none;
+  color: #fff;
+  padding-left: 60px;
+  font-size: 1rem;
+}
+.UserNameIcon {
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  left: 0;
+  background-image: url('./icon/profile.svg');
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.PasswordIcon {
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  left: 0;
+  background-image: url('./icon/lock.svg');
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.SignInUl > li > input::placeholder {
+  color: #fff;
+  opacity: 0.6;
+}
+
+.SignInUl > li > input:focus {
+  border: 2px solid #00acee;
+}
+.SignInUl > li:nth-child(1) {
+  font-size: 30px;
+  letter-spacing: 0.2rem;
+}
+
+.SignInUl > li:nth-child(4) {
+  margin-bottom: 20px;
+}
+
+.SignInUl > li:nth-child(5) {
+  height: 40px;
+  /* border: 1px solid #00acee; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.LoginToggle {
+  display: inline-block;
+  width: 75px;
+  height: 30px;
+  border: 1px solid #fff;
+  margin-right: 10px;
+  border-radius: 15px;
+  position: relative;
+}
+
+/* .LoginToggle::after {
+  content: '로그인 유지';
+  color: #fff;
+  position: absolute;
+  height: 30px;
+  left: 85px;
+  opacity: 0.4;
+} */
+
+.LoginToggleBtn {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: #fff;
+  position: absolute;
+  left: 2.5px;
+  top: 2.5px;
+  cursor: pointer;
+}
+
+.SocialLogin {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.4s;
+}
+.SocialLogin > img {
+  width: 30px;
+  height: 30px;
+}
+
+.SignInUl > li:nth-child(6) {
+  margin-bottom: 0;
+  height: 20px;
+  width: 80%;
+  display: flex;
+  justify-content: space-evenly;
+  margin: 0 auto;
+}
+
+.SignInUl > li:nth-child(6) > span {
+  font-size: 0.8rem;
+  cursor: pointer;
+  color: #fff;
+  opacity: 0.4;
+  transition: all 0.4s;
+}
+
+.SignInUl > li:nth-child(6) > span:hover {
+  opacity: 1;
+}
+
+.SignInBtn {
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  background-color: #00acee;
+  font-size: 1.2rem;
+  transition: all 0.4s;
+  letter-spacing: 0.1rem;
+}
+
+.SignInBtn:hover {
+  letter-spacing: 0.3rem;
+}
+.SignInBtn:active {
+  transform: translateY(10px);
+}
+
+/* FavoriteContents */
+.FavoriteContentsOut {
+  width: 100%;
+  height: 100vh;
+  min-width: 800px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.FavoriteContentsOut.col {
+  flex-direction: column;
+}
+
+.MoveCategoryBtn {
+  width: 300px;
+  height: 40px;
+  background-color: #00acee;
+  color: #fff;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 20px;
+  display: block;
+  margin: 50px;
+}
+
+.FavoriteUl {
+  margin: 0 auto;
+  width: 1000px;
+  min-width: 800px;
+  height: 600px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: auto;
+  -ms-overflow-style: none;
+}
+.FavoriteUl::-webkit-scrollbar {
+  display: none;
+}
+
+.FavoriteUl > li {
+  width: 200px;
+  height: 300px;
+  border-radius: 20px;
+  margin: 20px 20px;
+  color: #fff;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  overflow: hidden;
+}
+.FavoriteUl > li:hover > img {
+  transform: scale(1.1);
+}
+.FavoriteUl > li > img {
+  width: 200px;
+  height: 300px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  object-fit: cover;
+  z-index: -3;
+  transition: all 0.8s;
+}
+.FavoriteUl > li > span {
+  margin-top: 10px;
+}
+.FavoriteUl > li > span:nth-of-type(1) {
+  font-weight: 700;
+}
+
+.FavoriteDeleteBtn {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ccc;
+  border-radius: 50%;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+  z-index: 9;
+  text-align: center;
+  line-height: 30px;
+}
+.FavoriteDeleteBtn:hover {
+  border: none;
+  background-color: #d21c38;
+  opacity: 1;
+}
+
 /* Footer */
 
 .Footer {
@@ -164,8 +455,11 @@
   height: 40px;
   line-height: 40px;
   font-size: 0.5rem;
-  color: #000;
+  color: #fff;
+  opacity: 0.4;
   position: absolute;
+  left: 50%;
   bottom: 0;
   z-index: 999;
+  transform: translateX(-100px);
 }
