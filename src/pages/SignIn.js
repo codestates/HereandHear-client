@@ -1,19 +1,41 @@
 import React, { useState } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
+// import axios from 'axios';
+import BackGroundVideo2 from '../video/background2.mp4';
+import GoogleLogo from '../icon/google.png';
 
 function SignIn(props) {
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
-
   const login = () => {
     if (id === '' || password === '') {
-      alert('아이디나 패스워드를 입력해주세요');
+      console.log('아이디나 패스워드를 입력해주세요');
       return;
     } else {
       props.handleResponseSuccess();
       props.history.push('/');
     }
   };
+
+  //axios 코드 추가
+  //   axios
+  //   .post(
+  //     'https://localhost:80/user/signin',
+  //     {
+  //       email: id,
+  //       password: password,
+  //     },
+  //     {
+  //       'Content-Type': 'application/json',
+  //       withCredentials: true,
+  //     },
+  //   )
+  //   .then((data) => {
+  //     console.log('data === ', data);
+  //     props.handleResponseSuccess(data);
+  //     props.history.push('/');
+  //   });
+  // };
 
   const handleId = (e) => {
     setId(e.target.value);
@@ -22,39 +44,58 @@ function SignIn(props) {
   const handlePassword = (e) => {
     setPassword(e.target.value);
   };
-
   return (
-    <div className='SignIn'> 
+    <div className="SignIn">
       <form onSubmit={(e) => e.preventDefault()}>
-        <ul>
-          <li>memberLogin</li>
+        <ul className="SignInUl">
+          <li>MEMBER LOGIN</li>
           <li>
-            <input value={id} onChange={handleId}></input>
-          </li>
-          <li>
+            <div className="UserNameIcon"></div>
             <input
-              type="password"
-              value={password}
-              onChange={handlePassword}
+              value={id}
+              onChange={handleId}
+              placeholder="Username"
             ></input>
           </li>
           <li>
-            <button type="submit" onClick={login}>
-              로그인
+            <div className="PasswordIcon"></div>
+            <input
+              type="password"
+              onChange={handlePassword}
+              placeholder="Password"
+              autoComplete="on"
+            ></input>
+          </li>
+          <li>
+            <button type="submit" className="SignInBtn" onClick={login}>
+              LogIn
             </button>
           </li>
           <li>
-            <div>1</div>
-            <div>2</div>
-            <div>3</div>
+            <div>
+              <div className="LoginToggle">
+                <div className="LoginToggleBtn"></div>
+              </div>
+            </div>
+            <div className="SocialLogin">
+              <img src={GoogleLogo} alt="google" />
+            </div>
           </li>
           <li>
-            <span>회원가입</span>
-            <span>비번찾기</span>
+            <span>
+              <Link to="/signup" className="textLink">
+                회원가입
+              </Link>
+            </span>
             <span>아이디찾기</span>
+            <span>비밀번호찾기</span>
           </li>
         </ul>
       </form>
+      <div className="Filter"></div>
+      <video className="BackGround" autoPlay muted loop>
+        <source src={BackGroundVideo2} type="video/mp4"></source>
+      </video>
     </div>
   );
 }
