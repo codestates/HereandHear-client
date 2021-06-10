@@ -1,12 +1,12 @@
 import React from 'react'
 
 
-function Recommends({introTitle, title, place, text}){
+function Recommends({introTitle, title, place, text, recImg}){
     return(
         <div className="recommends">
           <span className="recIntroTitle">{introTitle}</span>
             <div className="recBody">
-              <img className="recImg" src="./images/pepe.jpg" alt="추천이미지"/>
+              <img className="recImg" src={recImg} alt="추천이미지"/>
               <div>
                 <div className="recTitle">{title}</div>
                 <div>{place}</div>

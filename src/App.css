@@ -13,6 +13,9 @@ ul {
   list-style: none;
 }
 
+.google {
+  z-index: 1000;
+}
 button {
   border: none;
   cursor: pointer;
@@ -179,6 +182,95 @@ body {
   font-size: 2.5rem;
 }
 
+/* SignUp */
+.SignUp {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  min-height: 500px;
+  padding-top: 80px;
+  /* border: 1px solid #d21c38; */
+}
+
+.SignUpUl {
+  /* border: 1px solid #d21c38; */
+  z-index: 6;
+}
+
+.SignUpUl > li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+  height: 60px;
+  margin-bottom: 30px;
+  position: relative;
+  /* border: 1px solid yellow; */
+}
+
+.SignUpUl > li > input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: transparent;
+  border: 1px solid #fff;
+  outline: none;
+  color: #fff;
+  padding-left: 60px;
+  font-size: 1rem;
+}
+
+.SignUpUl > li > input::placeholder {
+  color: #fff;
+  opacity: 0.6;
+}
+
+.SignUpUl > li > input:focus {
+  border: 2px solid #00acee;
+}
+.SignUpUl > li:nth-child(1) {
+  font-size: 30px;
+  letter-spacing: 0.2rem;
+}
+.SignUpUl > li:nth-child(5) {
+  /* margin-bottom: 5px; */
+}
+.SignUpUl > li:nth-child(6) {
+  /* padding-left: 20px; */
+}
+.checkbox {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.SignUpUl > li:nth-child(6) > .checkbox > input {
+  width: 20px;
+  height: 20px;
+  margin-right: 20px;
+}
+
+.SignUpBtn {
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  background-color: #00acee;
+  font-size: 1.2rem;
+  transition: all 0.4s;
+  letter-spacing: 0.1rem;
+}
+
+.SignUpBtn:hover {
+  letter-spacing: 0.3rem;
+}
+.SignUpBtn:active {
+  transform: translateY(10px);
+}
+
 /* SignIN */
 
 .SignIn {
@@ -189,7 +281,7 @@ body {
   justify-content: center;
   color: #fff;
   min-height: 500px;
-  padding-top: 60px;
+  padding-top: 80px;
   /* border: 1px solid #d21c38; */
 }
 .SignInUl {
@@ -225,6 +317,16 @@ body {
   position: absolute;
   left: 0;
   background-image: url('./icon/profile.svg');
+  background-size: 30px 30px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.NickNameIcon {
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  left: 0;
+  background-image: url('./icon/nickname.svg');
   background-size: 30px 30px;
   background-repeat: no-repeat;
   background-position: center;
@@ -447,8 +549,132 @@ body {
   opacity: 1;
 }
 
-/* Footer */
+/* MyPage */
 
+.MyPage {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  min-height: 500px;
+  padding-top: 80px;
+  /* border: 1px solid #d21c38; */
+}
+
+/* CategoryListContents */
+
+.CategoryListContents {
+  width: 100%;
+  min-width: 1000px;
+  height: 65%;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid orange;
+}
+
+/* CategoryListSlide */
+
+.CategoryListLine {
+  width: 100%;
+  height: 50%;
+  position: absolute;
+  top: 0;
+  border-bottom: 2px solid #fff;
+}
+
+.CategoryListSlide {
+  width: 100%;
+  height: 20%;
+  /* border: 1px solid green; */
+  position: relative;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.CategoryList {
+  width: 80%;
+  height: 100%;
+  flex-direction: row;
+  display: flex;
+  justify-content: space-between;
+  /* border: 1px solid #d21c38; */
+  align-items: center;
+}
+.CategoryList > li {
+  position: relative;
+  width: 120px;
+  font-size: 1.2rem;
+  letter-spacing: 0.1rem;
+  height: 120px;
+  /* border: 1px solid #00acee; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.CategoryTitle {
+  position: absolute;
+  top: 0;
+  transition: all 0.6s;
+  opacity: 0.6;
+}
+.CategoryDot {
+  width: 15px;
+  height: 15px;
+  border-radius: 15px;
+  background: #ccc;
+  transition: all 0.6s;
+}
+.CategoryList > li:hover > .CategoryTitle {
+  transform: translateY(-10px) scale(1.05);
+  font-size: 1.5rem;
+  color: #fff;
+  opacity: 1;
+}
+
+.CategoryList > li:hover > .CategoryDot {
+  transform: scale(1.3);
+  background-color: #fff;
+}
+.CategoryTitle.click {
+  font-size: 1.5rem;
+  color: #fff;
+  opacity: 1;
+}
+.CategoryDot.click {
+  background-color: #fff;
+  transform: scale(1.3);
+}
+
+/* Category */
+
+.Category {
+  /* border: 1px solid #d21c38; */
+  width: 100%;
+  min-width: 1000px;
+  height: 100vh;
+  color: #fff;
+  min-height: 800px;
+  padding-top: 120px;
+  overflow: hidden;
+}
+
+.CategoryCopyWrite {
+  font-size: 1.8rem;
+  color: #fff;
+  text-align: center;
+  top: 20px;
+  height: 5%;
+  /* border: 1px solid blue; */
+  margin-bottom: 20px;
+}
+
+/* Footer */
 .Footer {
   width: 200px;
   text-align: center;
@@ -462,4 +688,32 @@ body {
   bottom: 0;
   z-index: 999;
   transform: translateX(-100px);
+}
+
+/* 추천 */
+.recommends {
+  color: white;
+  text-align: center;
+  border: solid 4px tomato;
+}
+
+.recBody {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: solid 3px seagreen;
+}
+
+.recButtons {
+  display: flexbox;
+}
+
+.RecWeathers {
+  background-color: black;
+  border: solid 7px darkblue;
+}
+
+.RecSeasons {
+  background-color: black;
+  border: solid 7px orange;
 }
