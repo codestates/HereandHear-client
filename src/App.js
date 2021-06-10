@@ -14,6 +14,7 @@ import Footer from './components/Footer';
 
 function App() {
   const [isLogin, setLogin] = useState(false);
+  const [isPlay, setPlay] = useState(false);
 
   const handleResponseSuccess = function () {
     setLogin(!isLogin);
@@ -22,6 +23,10 @@ function App() {
   const handleLogout = function () {
     setLogin(!isLogin);
   };
+
+  const handlePlay = function () {
+    setPlay(!isPlay);
+  }
 
   return (
     <BrowserRouter>
@@ -43,7 +48,18 @@ function App() {
           )}
         />
         <Route path="/signup" render={() => <SignUp />} />
-        <Route path="/play" render={() => <Play />} />
+        <Route path="/play" 
+          render={() => {
+            if(!isLogin) {
+              return <Redirect to="/signin" />
+            } else {
+              return (
+              <Play           
+                isPlay={isPlay}
+                handlePlay={handlePlay}
+              />)
+            }
+          }} />
         <Route path="/favoritecontents" render={() => <FavoriteContents />} />
         <Route exact path="/" render={() => <Home isLogin={isLogin}/>} />
         <Route component={NotFound} />

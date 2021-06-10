@@ -56,6 +56,14 @@ const RecWeather = [
     place: "집에 있쟈..",
     text: "데헷",
     recImg: "Wimg4"
+  },
+  {
+    id: "Mist",
+    introTitle: "안개가 많은 날~",
+    title: "추욱 처지네요",
+    place: "집에 있는게 장땡쓰~~",
+    text: "데헷",
+    recImg: "Wimg4"
   }
 ]
 

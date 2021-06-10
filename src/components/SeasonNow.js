@@ -2,33 +2,35 @@ import React, { useEffect, useState } from 'react'
 import RecSeasons from '../documents/RecSeasons';
 import Recommends from './Recommends';
 
-function SeasonNow(){
-  const [ monthNow, setmonthNow ] = useState(0);
+function SeasonNow({handlePlay, isPlay}){
+  const [ monthNow, setMonthNow ] = useState(0);
   const month = new Date().getMonth() + 1; // 이렇게 하면 현재 달 나옴
 
   useEffect(() => {
-    setmonthNow(monthNow - monthNow + month)
+    setMonthNow(monthNow - monthNow + month)
   })
 
-    return(
-      <>
-        {RecSeasons.map((season) => {
-            if(monthNow === season.id) {
-              return(
-              <Recommends 
-                key={season.id}
-                introTitle={season.introTitle}
-                title={season.title}
-                place={season.place}
-                text={season.text}
-              />)
-            } else {
-              return '';
-            }
-          }
-        )}
-      </>
-    )
+  return(
+    <>
+      {RecSeasons.map((season) => {
+        if(monthNow === season.id) {
+          return(
+          <Recommends 
+            key={season.id}
+            introTitle={season.introTitle}
+            title={season.title}
+            place={season.place}
+            text={season.text}
+            handlePlay={handlePlay}
+            isPlay={isPlay}
+          />)
+        } else {
+          return '';
+        }
+      }
+      )}
+    </>
+  )
 }
 
 export default SeasonNow;

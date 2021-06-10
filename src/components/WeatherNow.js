@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import RecWeathers from '../documents/RecWeathers';
 import Recommends from '../components/Recommends';
 
-function WeatherNow(){
+function WeatherNow({handlePlay, isPlay}){
   const [weatherNow, setWeatherNow] = useState("");
   
   useEffect(()=>{
@@ -20,18 +20,20 @@ function WeatherNow(){
     <>
       {RecWeathers.map((weather) => {
         // console.log(weatherNow.weatherNow)
-          if(weatherNow.weatherNow === weather.id ) { // 더미데이터
-          return (
-          <Recommends 
+        if(weatherNow.weatherNow === weather.id ) { // 더미데이터
+        return (
+        <Recommends 
           key={weather.id}
           introTitle={weather.introTitle}
           title={weather.title}
           place={weather.place}
           text={weather.text}
-          />)
-        } else {
-          return '';
-        }
+          handlePlay={handlePlay}
+          isPlay={isPlay}
+        />)
+      } else {
+        return '';
+      }
       })}
     </>
   )
