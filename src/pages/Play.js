@@ -1,11 +1,13 @@
 import React from 'react';
+import { withRouter} from 'react-router-dom';
 import PlayContents from '../components/PlayContents';
 import SeasonNow from '../components/SeasonNow';
 import WeatherNow from '../components/WeatherNow';
 
 
-function Play({isPlay, handlePlay}) {
-
+function Play(props) {
+  console.log(props.history.location.pathname);
+  const {handlePlay,isPlay} = props
   return(
     <>
       { isPlay
@@ -23,4 +25,4 @@ function Play({isPlay, handlePlay}) {
   )
 }
 
-export default Play;
+export default withRouter(Play);

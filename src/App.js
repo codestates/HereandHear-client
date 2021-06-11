@@ -12,6 +12,9 @@ import Nav from './components/Nav';
 import Footer from './components/Footer';
 import Google from './components/Google';
 import './App.css';
+import AudioBackGround from './components/AudioBackGround';
+
+
 
 function App() {
   const [isLogin, setLogin] = useState(false);
@@ -70,6 +73,7 @@ function App() {
         <Route exact path="/" render={() => <Home isLogin={isLogin} />} />
         <Route component={NotFound} />
       </Switch>
+      <AudioBackGround/>
       <Footer />
       {/* <Google isLogin={isLogin} handleResponseSuccess={handleResponseSuccess}/> */}
     </BrowserRouter>
