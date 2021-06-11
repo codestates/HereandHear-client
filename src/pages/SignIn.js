@@ -3,8 +3,10 @@ import { withRouter, Link } from 'react-router-dom';
 // import axios from 'axios';
 import BackGroundVideo2 from '../video/background2.mp4';
 import GoogleLogo from '../icon/google.png';
+// import Google from '../components/Google';
 
 function SignIn(props) {
+  // console.log(props);
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
   const login = () => {
@@ -78,6 +80,7 @@ function SignIn(props) {
               </div>
             </div>
             <div className="SocialLogin">
+              {/* <Google isLogin={props.isLogin} handleResponseSuccess={props.handleResponseSuccess}/> */}
               <img src={GoogleLogo} alt="google" />
             </div>
           </li>

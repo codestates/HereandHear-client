@@ -7,7 +7,8 @@ const RecWeather = [
     title: "교토의 철학의 길",
     place: "Kyoto, Japan",
     text: "비에이초(美栄町)의 인기 관광지인 ‘시로가네 청의 호수(白金 青い池, 일본어 그대로 아오이 이케라고도 함)’는 홋카이도를 대표하는 “절경 장소”로 지금은 일본 전국 및 세계에도 그 이름을 알릴 정도로 아름답다고 합니다.",
-    recImg: "Wimg1"
+    recImg: "/img/sapporo.jpg",
+    url : 'localhost:3000/play'
   },
   {
     id: 'Thunderstorm',

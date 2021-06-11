@@ -34,6 +34,6 @@ function Home({isLogin}) {
       }
     </>
   );
-
 }
-  export default Home;
+export default Home;
+

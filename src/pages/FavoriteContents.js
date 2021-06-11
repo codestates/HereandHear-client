@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom'
 
 function FavoriteContents() {
-  const userInfo = false;
+  const userInfo = true;
 if(!userInfo){
   return <div className='FavoriteContentsOut col'>
     <div style={{
