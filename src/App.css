@@ -689,8 +689,6 @@ body {
   z-index: 999;
   transform: translateX(-100px);
 }
-
-/* 추천 */
 .recommends {
   color: white;
   text-align: center;
@@ -715,5 +713,69 @@ body {
 
 .RecSeasons {
   background-color: black;
+  border: solid 7px orange;
+}
+
+
+
+
+/* 플레이 */
+.View {
+  box-sizing: border-box;
+  width: 100%;
+  color: white;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.ContentsPlayer {
+  border: solid 5px orange;
+  padding: 50px 150px;
+}
+
+.PlayHead {
+  border: solid 5px darkblue;
+  display: flex;
+  padding: 20px 250px;
+  justify-content: space-between;
+}
+
+.PlayBody {
+  border: solid 3px seagreen;
+  /* padding: 100px 150px; */
+}
+
+.PlayTitle {
+  border: solid 4px tomato;
+}
+
+.BodyPlace {
+  border: solid 3px azure;
+  padding: 20px;
+}
+
+.BodyText {
+  border: solid 3px red;
+  padding: 100px
+}
+
+.PlayRecommneds {
+  flex-direction: column;
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  justify-content: center;
+  /* align-items: center; */
+}
+
+.PlayRecWeathers {
+  border: solid 7px darkblue;
+
+}
+
+.PlayRecSeasons{
   border: solid 7px orange;
 }
