@@ -2,13 +2,13 @@ import React, { useEffect, useState } from 'react'
 import RecSeasons from '../documents/RecSeasons';
 import Recommends from './Recommends';
 
-function SeasonNow({handlePlay, isPlay}){
+function SeasonNow({handlePlay}){
   const [ monthNow, setMonthNow ] = useState(0);
   const month = new Date().getMonth() + 1; // 이렇게 하면 현재 달 나옴
 
   useEffect(() => {
-    setMonthNow(monthNow - monthNow + month)
-  })
+    setMonthNow(month)
+  },[month])
 
   return(
     <>
@@ -18,11 +18,11 @@ function SeasonNow({handlePlay, isPlay}){
           <Recommends 
             key={season.id}
             introTitle={season.introTitle}
+            recImg={season.recImg}
             title={season.title}
             place={season.place}
             text={season.text}
             handlePlay={handlePlay}
-            isPlay={isPlay}
           />)
         } else {
           return '';

@@ -689,37 +689,149 @@ body {
   z-index: 999;
   transform: translateX(-100px);
 }
+
+
+/* recommneds */
+
 .recommends {
   color: white;
   text-align: center;
-  border: solid 4px tomato;
+  /* border: solid 4px tomato; */
+  box-sizing: border-box;
+  margin: 0 80px;
 }
 
 .recBody {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: solid 3px seagreen;
+  /* border: solid 3px seagreen; */
+}
+
+.recIntroTitle {
+  text-align: left;
+  font-size: 30px;
+  font-weight: bolder;
+}
+
+.recImg {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+.recDetail {
+  text-align: left;
+  margin: 50px;
+}
+
+.recTitle {
+  margin: 20px;
+  font-size: 30px;
+}
+
+.recPlace {
+  margin: 20px;
+  font-weight: bolder;
+}
+
+.recText {
+  margin: 20px;
+}
+
+.getDown {
+  font-size: 1.2rem;
+  transition: all 0.4s;
+  letter-spacing: 0.1rem;
+  cursor: pointer;
+  /* border: solid 3px white; */
+}
+.getDown:hover {
+  letter-spacing: 0.3rem;
+}
+.getDown:active {
+  transform: translateY(10px);
+}
+.getDownBtn {
+  width: 0px;
+  height: 0px;
+  margin-top: 20px;
+  border-bottom:30px solid none;
+  border-top:30px solid gray;
+  border-right: 30px solid transparent;
+  border-left: 30px solid  transparent;
 }
 
 .recButtons {
-  display: flexbox;
+  /* border: solid 5px plum; */
+  display: flex;
+  flex-direction: column;
+  margin: 10px 300px;
+}
+
+.goPlayPage {
+  background-color: #00acee;
+  color: white;
+  /* border: 1px solid #fff; */
+  font-size: 1.2rem;
+  transition: all 0.4s;
+  letter-spacing: 0.1rem;
+  cursor: pointer;
+  padding: 20px;
+}
+.goPlayPage:hover {
+  letter-spacing: 0.3rem;
+}
+.goPlayPage:active {
+  transform: translateY(10px);
+}
+
+.getPlay {
+  background-color: #00acee;
+  color: white;
+  cursor: pointer;
+  padding: 20px;
+  font-size: 1.2rem;
+  transition: all 0.4s;
+  letter-spacing: 0.1rem;
+}
+.getPlay:hover {
+  letter-spacing: 0.3rem;
+}
+.getPlay:active {
+  transform: translateY(10px);
+}
+
+.skip {
+  margin: 30px;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+  font-size: 1rem;
+  transition: all 0.4s;
+  letter-spacing: 0.1rem;
+}
+.skip:hover {
+  letter-spacing: 0.3rem;
+}
+.skip:active {
+  transform: translateY(10px);
 }
 
 .RecWeathers {
   background-color: black;
-  border: solid 7px darkblue;
+  margin: 100px 0;
+  /* border: solid 7px darkblue; */
 }
 
 .RecSeasons {
   background-color: black;
-  border: solid 7px orange;
+  /* border: solid 7px orange; */
 }
 
 
+/* play */
 
-
-/* 플레이 */
 .View {
   box-sizing: border-box;
   width: 100%;
@@ -763,6 +875,7 @@ body {
 }
 
 .PlayRecommneds {
+  position: absolute;
   flex-direction: column;
   display: flex;
   width: 100%;
@@ -772,10 +885,11 @@ body {
 }
 
 .PlayRecWeathers {
-  border: solid 7px darkblue;
+  /* border: solid 7px darkblue; */
+  margin: 500px 0 100px 0;
 
 }
 
 .PlayRecSeasons{
-  border: solid 7px orange;
+  /* border: solid 7px orange; */
 }

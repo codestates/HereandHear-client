@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
-import FavoriteContents from './pages/FavoriteContents';
+import Favorite from './pages/Favorite';
 import Home from './pages/Home';
 import Mypage from './pages/Mypage';
 import Play from './pages/Play';
@@ -10,7 +10,7 @@ import NotFound from './pages/NotFound';
 import Category from './pages/Category';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
-import Google from './components/Google';
+// import Google from './components/Google';
 import './App.css';
 
 function App() {
@@ -66,8 +66,14 @@ function App() {
               />)
             }
           }} />
-        <Route path="/favoritecontents" render={() => <FavoriteContents />} />
-        <Route exact path="/" render={() => <Home isLogin={isLogin} />} />
+        <Route 
+          path="/favorite" 
+          handlePlay={handlePlay}
+          render={() => <Favorite />} 
+        />
+        <Route exact path="/" render={() => 
+          <Home isLogin={isLogin} />} 
+        />
         <Route component={NotFound} />
       </Switch>
       <Footer />

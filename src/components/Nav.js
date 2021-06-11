@@ -25,7 +25,7 @@ function Nav({ isLogin, handleLogout }) {
           {isLogin ? (
             <>
               <li>
-                <NavLink exact to="/favoritecontents" className="textLink">
+                <NavLink exact to="/favorite" className="textLink">
                   Favorite
                 </NavLink>
               </li>

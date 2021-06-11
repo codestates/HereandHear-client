@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import RecWeathers from '../documents/RecWeathers';
 import Recommends from '../components/Recommends';
 
-function WeatherNow({handlePlay, isPlay}){
+function WeatherNow({handlePlay}){
   const [weatherNow, setWeatherNow] = useState("");
   
   useEffect(()=>{
@@ -25,11 +25,11 @@ function WeatherNow({handlePlay, isPlay}){
         <Recommends 
           key={weather.id}
           introTitle={weather.introTitle}
+          recImg={weather.recImg}
           title={weather.title}
           place={weather.place}
           text={weather.text}
           handlePlay={handlePlay}
-          isPlay={isPlay}
         />)
       } else {
         return '';

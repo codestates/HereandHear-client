@@ -1,27 +1,31 @@
 import React from 'react'
 
-function Recommends({introTitle, title, place, text, handlePlay}){
+function Recommends({introTitle, recImg, title, place, text, handlePlay}){
     const pathname = window.location.pathname; // 현재 페이지 pathname을 알 수 있음 ex) /play
 
     return(
         <div className="recommends">
-          <span className="recIntroTitle">{introTitle}</span>
+          <div className="recIntroTitle">{introTitle}</div>
             <div className="recBody">
               <img className="recImg" src={recImg} alt="추천이미지"/>
-              <div>
+              <div className="recDetail">
                 <div className="recTitle">{title}</div>
-                <div>{place}</div>
-                <div>{text}</div>
+                <div className="recPlace">{place}</div>
+                <div className="recText">{text}</div>
               </div>
-              <button className="getDown">내려가기</button>
+              <div className="getDown">
+                Down
+                <div className="getDownBtn"></div>
+              </div>
             </div>
           <div className="recButtons">
-            {/* 홈페이지에 있을 때에는 떠나기 버튼이 아니라, 플레이 페이지로 이동하기 버튼이 있어야 한다. */}
+            {/* 현재 홈 페이지 추천창에서 플레이 페이지 가기 누르면 튕기는 현상 = 세선 쿠키가 없어서 그렇다 */}
             { pathname === '/' ?(
               <button 
                 className="goPlayPage" 
-                onClick={() => {window.location.pathname = "/play"}}>
-                플레이페이지 가기
+                onClick={() => {window.location.pathname = "/play"}}
+                >
+                Play로 이동!
               </button>
              ) : (
               <button 

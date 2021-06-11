@@ -19,7 +19,6 @@ function Home({isLogin}) {
           <source src={BackGroundVideo} type="video/mp4"></source>
         </video>
       </div>
-      {/* 추천 */}
       {
         isLogin
         ? <>

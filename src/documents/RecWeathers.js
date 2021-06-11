@@ -8,7 +8,6 @@ const RecWeather = [
     place: "Kyoto, Japan",
     text: "비에이초(美栄町)의 인기 관광지인 ‘시로가네 청의 호수(白金 青い池, 일본어 그대로 아오이 이케라고도 함)’는 홋카이도를 대표하는 “절경 장소”로 지금은 일본 전국 및 세계에도 그 이름을 알릴 정도로 아름답다고 합니다.",
     recImg: "/img/sapporo.jpg",
-    url : 'localhost:3000/play'
   },
   {
     id: 'Thunderstorm',
@@ -52,11 +51,11 @@ const RecWeather = [
   },
   {
     id: "Clouds",
-    introTitle: "구름낀 날.. 우중충",
-    title: "우중충 하면 시러용",
-    place: "집에 있쟈..",
-    text: "데헷",
-    recImg: "Wimg4"
+    introTitle: "구름낀 날에 가보고 싶은 곳",
+    title: "런던, 흐린 구름과 역사의 도시",
+    place: "London, UK",
+    text: "런던은 세계 어느 도시와도 경쟁할 만한 장엄한 역사를 가지고 있지만, 혁신의 최첨단에 서 있기도 해요. 박물관에 빠져들거나, 최고의 공연 예술을 관람하거나, 클럽과 펍을 방문하거나, 그저 역사의 위대한 발자취를 따라 걸어 다녀도 좋을 거예요. 쇼핑을 원한다면 시장이나 몰에서 무엇이든 구입할 수 있고, 강을 따라 깜짝 이벤트들이 계절마다 펼쳐져요.",
+    recImg: "/img/london.jpg"
   },
   {
     id: "Mist",
