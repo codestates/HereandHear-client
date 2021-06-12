@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import RecWeathers from '../documents/RecWeathers';
+import DummyDatas from '../documents/DummyDatas';
 import Recommends from '../components/Recommends';
 
 function WeatherNow({handlePlay}){
@@ -18,17 +18,17 @@ function WeatherNow({handlePlay}){
 
   return(
     <>
-      {RecWeathers.map((weather) => {
+      {DummyDatas.map((DummyData) => {
         // console.log(weatherNow.weatherNow)
-        if(weatherNow.weatherNow === weather.id ) { // 더미데이터
+        if(weatherNow.weatherNow === DummyData.weather ) { // 더미데이터
         return (
         <Recommends 
-          key={weather.id}
-          introTitle={weather.introTitle}
-          recImg={weather.recImg}
-          title={weather.title}
-          place={weather.place}
-          text={weather.text}
+          key={DummyData.id}
+          introTitle={DummyData.weatherTitle}
+          recImg={DummyData.recImg}
+          title={DummyData.title}
+          place={DummyData.place}
+          text={DummyData.text}
           handlePlay={handlePlay}
         />)
       } else {

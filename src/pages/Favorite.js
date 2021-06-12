@@ -2,14 +2,15 @@ import React from 'react';
 import {Link} from 'react-router-dom'
 import FavoriteContents from '../components/FavoriteContents';
 import FavContexts from '../documents/FavContexts';
+import DummyDatas from '../documents/DummyDatas'
 
-function Favorite({handlePlay}) {
+function Favorite({isLogin, handlePlay}) {
   const userInfo = true;
   return (
     <>
       <div className='FavoriteContentsOut'>
           <ul className='FavoriteUl'>
-      {FavContexts.map((FavContext) => {
+      {DummyDatas.map((DummyData) => {
         if(!userInfo) {
           return (
           <div className='FavoriteContentsOut col'>
@@ -28,10 +29,10 @@ function Favorite({handlePlay}) {
         } else {
           return (
             <FavoriteContents
-              key={FavContext.id}
-              img={FavContext.img}
-              category={FavContext.category}
-              title={FavContext.title}
+              key={DummyData.id}
+              img={DummyData.recImg}
+              category={DummyData.category}
+              title={DummyData.title}
               handlePlay={handlePlay}
             />
           )

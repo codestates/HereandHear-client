@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import RecSeasons from '../documents/RecSeasons';
+import DummyDatas from '../documents/DummyDatas';
 import Recommends from './Recommends';
 
 function SeasonNow({handlePlay}){
@@ -12,16 +12,16 @@ function SeasonNow({handlePlay}){
 
   return(
     <>
-      {RecSeasons.map((season) => {
-        if(monthNow === season.id) {
+      {DummyDatas.map((DummyData) => {
+        if(monthNow === DummyData.month) {
           return(
           <Recommends 
-            key={season.id}
-            introTitle={season.introTitle}
-            recImg={season.recImg}
-            title={season.title}
-            place={season.place}
-            text={season.text}
+            key={DummyData.id}
+            introTitle={DummyData.seasonTitle}
+            recImg={DummyData.recImg}
+            title={DummyData.title}
+            place={DummyData.place}
+            text={DummyData.text}
             handlePlay={handlePlay}
           />)
         } else {

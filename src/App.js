@@ -69,6 +69,7 @@ function App() {
         <Route 
           path="/favorite" 
           handlePlay={handlePlay}
+          isLogin={isLogin}
           render={() => <Favorite />} 
         />
         <Route exact path="/" render={() => 
