@@ -8,6 +8,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  user-select: none;
 }
 ul {
   list-style: none;
@@ -37,9 +38,8 @@ body {
   min-height: 80px;
   min-width: 800px;
   position: fixed;
-  z-index: 999;
-  animation-name: Landing;
-  animation-duration: 1.5s;
+  z-index: 900;
+  animation: Landing 1.5s;
 }
 
 @keyframes Landing {
@@ -62,6 +62,20 @@ body {
   font-size: 1rem;
   margin: 0 auto;
 }
+.NavLogo {
+  width: 30px;
+  height: 30px;
+  opacity: 0.4;
+  transition: all 0.4s;
+}
+.NavLogo:hover {
+  opacity: 1;
+}
+.NavLogo > img {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+}
 
 .Nav > ul {
   margin: 0 auto;
@@ -78,14 +92,20 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
+  color: #ffffff73;
   font-size: 16px;
-  opacity: 0.4;
+}
+
+.Nav > ul > li > .textLink {
   transition: all 0.4s;
 }
 
-.Nav > ul > li:hover {
-  opacity: 1;
+.Nav > ul > li:hover > .textLink {
+  color: #ffffff;
+}
+
+a.textLink.active {
+  color: #ffffff;
 }
 
 .LogInBtn {
@@ -173,13 +193,41 @@ body {
   color: #fff;
   font-size: 6rem;
   font-weight: 700;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
+  width: max-content;
+  position: relative;
+  letter-spacing: 10px;
+  animation: textAni 2s linear forwards;
+}
+
+@keyframes textAni {
+  0% {
+    color: transparent;
+    margin-bottom: -40px;
+  }
+  30% {
+    letter-spacing: 25px;
+    margin-bottom: -40px;
+  }
+  85% {
+    letter-spacing: 15px;
+    margin-bottom: -40px;
+  }
 }
 
 .HomeSubTitle {
   color: #fff;
   z-index: 3;
   font-size: 2.5rem;
+  font-weight: 400;
+  width: max-content;
+  animation: subtitle 0.5s ease 2s forwards;
+  opacity: 0;
+}
+@keyframes subtitle {
+  to {
+    opacity: 1;
+  }
 }
 
 /* SignUp */
@@ -570,13 +618,12 @@ body {
   min-width: 1000px;
   height: 65%;
   min-height: 500px;
+  /* border: 1px solid orange; */
   display: flex;
   align-items: center;
-  justify-content: center;
-  border: 1px solid orange;
 }
 
-/* CategoryListSlide */
+/* CategoryList */
 
 .CategoryListLine {
   width: 100%;
@@ -584,6 +631,16 @@ body {
   position: absolute;
   top: 0;
   border-bottom: 2px solid #fff;
+  animation: 3s lineLoad ease;
+}
+
+@keyframes lineLoad {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
 }
 
 .CategoryListSlide {
@@ -604,51 +661,78 @@ body {
   justify-content: space-between;
   /* border: 1px solid #d21c38; */
   align-items: center;
+  animation: 5s TitleDotLoad ease;
 }
-.CategoryList > li {
+
+@keyframes TitleDotLoad {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.CategoryLi {
   position: relative;
   width: 120px;
-  font-size: 1.2rem;
-  letter-spacing: 0.1rem;
   height: 120px;
   /* border: 1px solid #00acee; */
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
 }
+
 .CategoryTitle {
   position: absolute;
   top: 0;
-  transition: all 0.6s;
+  transition: all 0.4s;
   opacity: 0.6;
+  font-size: 1.2rem;
+  letter-spacing: 0.1rem;
 }
 .CategoryDot {
   width: 15px;
   height: 15px;
   border-radius: 15px;
   background: #ccc;
-  transition: all 0.6s;
+  transition: all 0.4s;
 }
-.CategoryList > li:hover > .CategoryTitle {
+
+.CategoryLi > input[type='radio'] {
+  display: none;
+}
+.CategoryLi > label {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+/* .CategoryLi > label:hover > .CategoryTitle {
   transform: translateY(-10px) scale(1.05);
   font-size: 1.5rem;
   color: #fff;
   opacity: 1;
 }
-
-.CategoryList > li:hover > .CategoryDot {
-  transform: scale(1.3);
+.CategoryLi > label:hover > .CategoryDot {
+  width: 20px;
+  height: 20px;
   background-color: #fff;
-}
-.CategoryTitle.click {
+} */
+
+.CategoryLi input[type='radio']:checked + label .CategoryTitle {
   font-size: 1.5rem;
   color: #fff;
   opacity: 1;
 }
-.CategoryDot.click {
+
+.CategoryLi input[type='radio']:checked + label .CategoryDot {
   background-color: #fff;
-  transform: scale(1.3);
+  width: 20px;
+  height: 20px;
 }
 
 /* Category */
@@ -665,14 +749,35 @@ body {
 }
 
 .CategoryCopyWrite {
-  font-size: 1.8rem;
+  font-size: 2rem;
   color: #fff;
   text-align: center;
-  top: 20px;
   height: 5%;
-  /* border: 1px solid blue; */
+  min-height: 36px;
   margin-bottom: 20px;
+  position: relative;
+  width: max-content;
+  margin: 0 auto;
+  /* border: 1px solid yellow; */
 }
+
+/* .CategoryCopyWrite::before,
+.CategoryCopyWrite::after {
+  content: '';
+  inset: 0;
+  position: absolute;
+}
+
+.CategoryCopyWrite::before {
+  background: #000;
+  animation: typeAni 2s ease forwards;
+}
+
+@keyframes typeAni {
+  to {
+    left: 100%;
+  }
+} */
 
 /* Footer */
 .Footer {
@@ -686,7 +791,7 @@ body {
   position: absolute;
   left: 50%;
   bottom: 0;
-  z-index: 999;
+  z-index: 910;
   transform: translateX(-100px);
 }
 .recommends {
@@ -715,9 +820,6 @@ body {
   background-color: black;
   border: solid 7px orange;
 }
-
-
-
 
 /* 플레이 */
 .View {
@@ -759,7 +861,7 @@ body {
 
 .BodyText {
   border: solid 3px red;
-  padding: 100px
+  padding: 100px;
 }
 
 .PlayRecommneds {
@@ -773,9 +875,230 @@ body {
 
 .PlayRecWeathers {
   border: solid 7px darkblue;
-
 }
 
-.PlayRecSeasons{
+.PlayRecSeasons {
   border: solid 7px orange;
+}
+
+/* 로딩페이지 창  */
+
+.LoadingPage {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  background: #000;
+  z-index: 1000;
+}
+
+.Loader {
+  position: relative;
+  width: 100%;
+  text-align: center;
+}
+.Loader::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: -25%;
+  width: 100%;
+  height: 50%;
+  background-color: #000;
+  z-index: 9;
+  transform: scaleX(0);
+  animation: line 0.8s linear 0s;
+}
+
+.Loader::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -25%;
+  width: 100%;
+  height: 50%;
+  background-color: #000;
+  z-index: 9;
+  transform: scaleX(0);
+  animation: line 0.8s linear 0s;
+}
+@keyframes line {
+  0% {
+    transform: scaleX(1);
+  }
+}
+
+h4 {
+  color: #fff;
+  letter-spacing: 15px;
+  margin: 15px 0;
+  font-size: 1rem;
+  opacity: 1;
+  animation: textBlink 0.125s linear 0.8s infinite;
+}
+
+@keyframes textBlink {
+  50% {
+    opacity: 0.3;
+  }
+}
+
+.LoadingLine {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to left, transparent, #fff, transparent);
+}
+
+.LoadingLine::before {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  left: 0;
+  right: 0;
+  top: -12px;
+  background-color: #fff;
+  border-radius: 50%;
+  margin: 0 auto;
+  transform: scale(0);
+  animation: dot 2s ease 0.8s;
+}
+
+@keyframes dot {
+  100% {
+    transform: scale(3);
+    opacity: 0;
+  }
+}
+
+/* UnderArrow */
+
+.UnderArrow {
+  position: absolute;
+  bottom: 10%;
+}
+.UnderArrow div {
+  width: 30px;
+  height: 30px;
+  border-bottom: 5px solid #fff;
+  border-right: 5px solid #fff;
+  transform: rotate(45deg);
+  margin: -10px;
+  animation: underArrow 2s infinite;
+}
+.UnderArrow div:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.UnderArrow div:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+@keyframes underArrow {
+  0% {
+    opacity: 0;
+    transform: rotate(45deg), translate(-20px, -20px);
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(45deg), translate(20px, 20px);
+  }
+}
+
+/* 오디오 플레이어  */
+
+.AudioBackGround {
+  position: absolute;
+  z-index: 910;
+  width: 350px;
+  height: 60px;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 30px;
+  border: 1px solid #fff;
+  background: #ccc;
+  cursor: move;
+  bottom: 30px;
+  left: 30px;
+}
+
+.AudioBackGround button {
+  background: transparent;
+  border: 1px solid #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  color: #fff;
+}
+
+.AudioBackGround span {
+  color: #fff;
+}
+
+/* NotFound */
+
+.NotFound {
+  background-image: url('./img/notfound.jpg');
+  background-size: cover;
+  width: 100%;
+  min-width: 1500px;
+  height: 100vh;
+  min-height: 800px;
+  z-index: 999;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.NotFound::before {
+  content: '';
+  position: absolute;
+  background-color: #000;
+  width: 100%;
+  height: 100%;
+  opacity: 0.4;
+}
+.NotFound > h1 {
+  color: #fff;
+  font-size: 7rem;
+  margin-bottom: 50px;
+  z-index: 999;
+  user-select: none;
+}
+.NotFoundBtn {
+  width: 250px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  color: #fff;
+  background-color: #00acee;
+  z-index: 999;
+  border-radius: 20px;
+  transition: 0.8s all;
+}
+.NotFoundBtn:hover {
+  letter-spacing: 0.2rem;
+}
+
+/* PlayModal */
+
+.PlayModal {
+  -ms-overflow-style: none;
+}
+
+.PlayModal::-webkit-scrollbar {
+  display: none;
+}
+
+.ModalArrow {
+  left: 50%;
+  transform: translateX(-50%);
 }

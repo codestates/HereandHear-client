@@ -13,6 +13,10 @@ import Footer from './components/Footer';
 import Google from './components/Google';
 import './App.css';
 
+import AudioBackGround from './components/AudioBackGround';
+
+
+
 function App() {
   const [isLogin, setLogin] = useState(false);
   const [isPlay, setPlay] = useState(false);
@@ -28,6 +32,7 @@ function App() {
   const handlePlay = function () {
     setPlay(!isPlay);
   }
+
 
   return (
     <BrowserRouter>
@@ -55,21 +60,25 @@ function App() {
         />
         <Route path="/signup" render={() => <SignUp />} />
         <Route path="/play" 
-          render={() => {
-            if(!isLogin) {
-              return <Redirect to="/signin" />
-            } else {
-              return (
-              <Play           
-                isPlay={isPlay}
-                handlePlay={handlePlay}
-              />)
-            }
-          }} />
+          // render={() => {
+          //   if(!isLogin) {
+          //     return <Redirect to="/signin" />
+          //   } else {
+          //     return (
+          //     <Play           
+          //       isPlay={isPlay}
+          //       handlePlay={handlePlay}
+          //     />)
+          //   }
+          // }} 
+          component={Play}
+          
+          />
         <Route path="/favoritecontents" render={() => <FavoriteContents />} />
         <Route exact path="/" render={() => <Home isLogin={isLogin} />} />
         <Route component={NotFound} />
       </Switch>
+      <AudioBackGround isLogin={isLogin}/>
       <Footer />
       {/* <Google isLogin={isLogin} handleResponseSuccess={handleResponseSuccess}/> */}
     </BrowserRouter>

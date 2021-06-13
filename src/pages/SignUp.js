@@ -175,7 +175,8 @@ function SignUp() {
               <input
                 id="checkbox"
                 type="checkbox"
-                checked={checked}
+                // checked={checked}
+                defaultChecked
                 onChange={handleCheck}
               ></input>
               <label htmlFor="checkbox">
