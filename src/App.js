@@ -13,6 +13,10 @@ import Footer from './components/Footer';
 // import Google from './components/Google';
 import './App.css';
 
+import AudioBackGround from './components/AudioBackGround';
+
+
+
 function App() {
   const [isLogin, setLogin] = useState(false);
   const [isPlay, setPlay] = useState(false);
@@ -28,6 +32,7 @@ function App() {
   const handlePlay = function () {
     setPlay(!isPlay);
   }
+
 
   return (
     <BrowserRouter>
@@ -77,6 +82,7 @@ function App() {
         />
         <Route component={NotFound} />
       </Switch>
+      <AudioBackGround isLogin={isLogin}/>
       <Footer />
       {/* <Google isLogin={isLogin} handleResponseSuccess={handleResponseSuccess}/> */}
     </BrowserRouter>

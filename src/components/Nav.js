@@ -5,7 +5,7 @@ function Nav({ isLogin, handleLogout }) {
   return (
     <div className="NavOut">
       <div className="Nav">
-        <div>Logo</div>
+        <div className='NavLogo'><img src='/logo1-1.png'></img></div>
         <ul>
           <li>
             <NavLink exact to="/" className="textLink">

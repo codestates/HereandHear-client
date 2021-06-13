@@ -1,11 +1,18 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-function NotFound() {
-  return( 
-  <div className="NotFound">
-    Not Found :0 <br></br>
-    Please Try diffrent address!
-    </div>)
+function NotFound(props) {
+  console.log(props)
+  return (
+    <div className="NotFound">
+      <h1>Not Found Page</h1>
+      <div className="NotFoundBtn">
+        <Link className="textLink" to="/">
+          Here & Hear
+        </Link>
+      </div>
+    </div>
+  );
 }
 
 export default NotFound;

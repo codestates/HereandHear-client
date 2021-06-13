@@ -8,6 +8,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  user-select: none;
 }
 ul {
   list-style: none;
@@ -37,9 +38,8 @@ body {
   min-height: 80px;
   min-width: 800px;
   position: fixed;
-  z-index: 999;
-  animation-name: Landing;
-  animation-duration: 1.5s;
+  z-index: 900;
+  animation: Landing 1.5s;
 }
 
 @keyframes Landing {
@@ -62,6 +62,20 @@ body {
   font-size: 1rem;
   margin: 0 auto;
 }
+.NavLogo {
+  width: 30px;
+  height: 30px;
+  opacity: 0.4;
+  transition: all 0.4s;
+}
+.NavLogo:hover {
+  opacity: 1;
+}
+.NavLogo > img {
+  width: 30px;
+  height: 30px;
+  object-fit: cover;
+}
 
 .Nav > ul {
   margin: 0 auto;
@@ -78,14 +92,20 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
+  color: #ffffff73;
   font-size: 16px;
-  opacity: 0.4;
+}
+
+.Nav > ul > li > .textLink {
   transition: all 0.4s;
 }
 
-.Nav > ul > li:hover {
-  opacity: 1;
+.Nav > ul > li:hover > .textLink {
+  color: #ffffff;
+}
+
+a.textLink.active {
+  color: #ffffff;
 }
 
 .LogInBtn {
@@ -173,13 +193,41 @@ body {
   color: #fff;
   font-size: 6rem;
   font-weight: 700;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
+  width: max-content;
+  position: relative;
+  letter-spacing: 10px;
+  animation: textAni 2s linear forwards;
+}
+
+@keyframes textAni {
+  0% {
+    color: transparent;
+    margin-bottom: -40px;
+  }
+  30% {
+    letter-spacing: 25px;
+    margin-bottom: -40px;
+  }
+  85% {
+    letter-spacing: 15px;
+    margin-bottom: -40px;
+  }
 }
 
 .HomeSubTitle {
   color: #fff;
   z-index: 3;
   font-size: 2.5rem;
+  font-weight: 400;
+  width: max-content;
+  animation: subtitle 0.5s ease 2s forwards;
+  opacity: 0;
+}
+@keyframes subtitle {
+  to {
+    opacity: 1;
+  }
 }
 
 /* SignUp */
@@ -570,13 +618,12 @@ body {
   min-width: 1000px;
   height: 65%;
   min-height: 500px;
+  /* border: 1px solid orange; */
   display: flex;
   align-items: center;
-  justify-content: center;
-  border: 1px solid orange;
 }
 
-/* CategoryListSlide */
+/* CategoryList */
 
 .CategoryListLine {
   width: 100%;
@@ -584,6 +631,16 @@ body {
   position: absolute;
   top: 0;
   border-bottom: 2px solid #fff;
+  animation: 3s lineLoad ease;
+}
+
+@keyframes lineLoad {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 100%;
+  }
 }
 
 .CategoryListSlide {
@@ -604,51 +661,78 @@ body {
   justify-content: space-between;
   /* border: 1px solid #d21c38; */
   align-items: center;
+  animation: 5s TitleDotLoad ease;
 }
-.CategoryList > li {
+
+@keyframes TitleDotLoad {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.CategoryLi {
   position: relative;
   width: 120px;
-  font-size: 1.2rem;
-  letter-spacing: 0.1rem;
   height: 120px;
   /* border: 1px solid #00acee; */
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
 }
+
 .CategoryTitle {
   position: absolute;
   top: 0;
-  transition: all 0.6s;
+  transition: all 0.4s;
   opacity: 0.6;
+  font-size: 1.2rem;
+  letter-spacing: 0.1rem;
 }
 .CategoryDot {
   width: 15px;
   height: 15px;
   border-radius: 15px;
   background: #ccc;
-  transition: all 0.6s;
+  transition: all 0.4s;
 }
-.CategoryList > li:hover > .CategoryTitle {
+
+.CategoryLi > input[type='radio'] {
+  display: none;
+}
+.CategoryLi > label {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+/* .CategoryLi > label:hover > .CategoryTitle {
   transform: translateY(-10px) scale(1.05);
   font-size: 1.5rem;
   color: #fff;
   opacity: 1;
 }
-
-.CategoryList > li:hover > .CategoryDot {
-  transform: scale(1.3);
+.CategoryLi > label:hover > .CategoryDot {
+  width: 20px;
+  height: 20px;
   background-color: #fff;
-}
-.CategoryTitle.click {
+} */
+
+.CategoryLi input[type='radio']:checked + label .CategoryTitle {
   font-size: 1.5rem;
   color: #fff;
   opacity: 1;
 }
-.CategoryDot.click {
+
+.CategoryLi input[type='radio']:checked + label .CategoryDot {
   background-color: #fff;
-  transform: scale(1.3);
+  width: 20px;
+  height: 20px;
 }
 
 /* Category */
@@ -665,14 +749,35 @@ body {
 }
 
 .CategoryCopyWrite {
-  font-size: 1.8rem;
+  font-size: 2rem;
   color: #fff;
   text-align: center;
-  top: 20px;
   height: 5%;
-  /* border: 1px solid blue; */
+  min-height: 36px;
   margin-bottom: 20px;
+  position: relative;
+  width: max-content;
+  margin: 0 auto;
+  /* border: 1px solid yellow; */
 }
+
+/* .CategoryCopyWrite::before,
+.CategoryCopyWrite::after {
+  content: '';
+  inset: 0;
+  position: absolute;
+}
+
+.CategoryCopyWrite::before {
+  background: #000;
+  animation: typeAni 2s ease forwards;
+}
+
+@keyframes typeAni {
+  to {
+    left: 100%;
+  }
+} */
 
 /* Footer */
 .Footer {
@@ -686,7 +791,7 @@ body {
   position: absolute;
   left: 50%;
   bottom: 0;
-  z-index: 999;
+  z-index: 910;
   transform: translateX(-100px);
 }
 
