@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter} from 'react-router-dom';
 import PlayContents from '../components/PlayContents';
+import PlayModalPage from '../components/PlayModalPage';
 import SeasonNow from '../components/SeasonNow';
 import WeatherNow from '../components/WeatherNow';
 
@@ -10,7 +11,7 @@ function Play(props) {
   const {handlePlay,isPlay} = props
   return(
     <>
-      { isPlay
+      {/* { isPlay
       ? <PlayContents handlePlay={handlePlay}/>
       : <div className="PlayRecommneds">
           <div className="PlayRecWeathers">
@@ -20,7 +21,8 @@ function Play(props) {
             <SeasonNow handlePlay={handlePlay}/>
           </div>
         </div>
-      }
+      } */}
+      <PlayModalPage></PlayModalPage>
     </>
   )
 }

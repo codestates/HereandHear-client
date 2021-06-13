@@ -25,7 +25,7 @@ function Category() {
 
   setTimeout(() => {
     setLoading(true);
-  }, 1500);
+  }, 2000);
 
   if (loading) {
     return (
