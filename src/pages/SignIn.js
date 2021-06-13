@@ -9,7 +9,8 @@ function SignIn(props) {
   // console.log(props);
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
-  const login = () => {
+  const login = (event) => {
+    event.preventDefault();
     if (id === '' || password === '') {
       console.log('아이디나 패스워드를 입력해주세요');
       return;

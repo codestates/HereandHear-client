@@ -1,12 +1,37 @@
-import React from 'react';
+import React ,{useState,useEffect}from 'react';
 import BackGroundVideo from '../video/background.mp4';
 import WeatherNow from '../components/WeatherNow';
 import SeasonNow from '../components/SeasonNow';
 import UnderArrow from '../components/UnderArrow';
 function Home({isLogin}) {
 
+  const [ScrollY, setScrollY] = useState(0);
+  const [isArrow, setArrow] =useState(true);
+  const handleFollow = () => {
+    setScrollY(window.pageYOffset); 
+    if(ScrollY>300){
+      setArrow(false);
+    }else{
+      setArrow(true);
+    }
+  }
 
-  
+  // useEffect(() => {
+  //   // console.log("ScrollY is ", ScrollY); 
+  // }, [ScrollY])
+
+
+  useEffect(() => {
+    const watch = () => {
+      window.addEventListener('scroll', handleFollow);
+    }
+    watch(); 
+    return () => {
+      window.removeEventListener('scroll', handleFollow); 
+    }
+  })
+
+
   return (
     <>
       <div className="HomeOut">
@@ -20,17 +45,14 @@ function Home({isLogin}) {
         <video className="BackGround" autoPlay muted loop>
           <source src={BackGroundVideo} type="video/mp4"></source>
         </video>
-        {isLogin ? ( <UnderArrow />):(<></>)}
+        {isLogin&& isArrow ? ( <UnderArrow />):(<></>)}
       </div>
       {
         isLogin
         ? <>
-            <div className="RecWeathers">
-              <WeatherNow />
-            </div>
-            <div className="RecSeasons">
-              <SeasonNow />
-            </div>
+          
+              <WeatherNow/>
+              <SeasonNow className='SeasonNow'/>
           </> 
         : <></>
       }

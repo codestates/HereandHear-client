@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
 import FavoriteContents from '../components/FavoriteContents';
-import FavContexts from '../documents/FavContexts';
+// import FavContexts from '../documents/FavContexts';
 import DummyDatas from '../documents/DummyDatas'
 
 function Favorite({isLogin, handlePlay}) {

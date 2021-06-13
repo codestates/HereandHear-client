@@ -10,29 +10,28 @@ import NotFound from './pages/NotFound';
 import Category from './pages/Category';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
-// import Google from './components/Google';
 import './App.css';
-
 import AudioBackGround from './components/AudioBackGround';
-
-
 
 function App() {
   const [isLogin, setLogin] = useState(false);
   const [isPlay, setPlay] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const handleResponseSuccess = function () {
     setLogin(!isLogin);
   };
 
+  const handleResponsePlay = function (result) {
+    setIsPlaying(result);
+  };
   const handleLogout = function () {
     setLogin(!isLogin);
   };
 
   const handlePlay = function () {
     setPlay(!isPlay);
-  }
-
+  };
 
   return (
     <BrowserRouter>
@@ -45,7 +44,7 @@ function App() {
             if (!isLogin) {
               return <Redirect to="/signin" />;
             }
-            return <Mypage />
+            return <Mypage />;
           }}
           // component={Mypage}
         />
@@ -59,32 +58,38 @@ function App() {
           )}
         />
         <Route path="/signup" render={() => <SignUp />} />
-        <Route path="/play" 
+        <Route
+          path="/play"
           render={() => {
-            if(!isLogin) {
-              return <Redirect to="/signin" />
+            if (!isLogin) {
+              return <Redirect to="/signin" />;
             } else {
               return (
-              <Play           
-                isPlay={isPlay}
-                handlePlay={handlePlay}
-              />)
+                <Play
+                  isPlay={isPlay}
+                  handlePlay={handlePlay}
+                  isPlaying={isPlaying}
+                  handleResponsePlay={handleResponsePlay}
+                />
+              );
             }
-          }} />
-        <Route 
-          path="/favorite" 
+          }}
+        />
+        <Route
+          path="/favorite"
           handlePlay={handlePlay}
           isLogin={isLogin}
-          render={() => <Favorite />} 
+          render={() => <Favorite />}
         />
-        <Route exact path="/" render={() => 
-          <Home isLogin={isLogin} />} 
-        />
+        <Route exact path="/" render={() => <Home isLogin={isLogin} />} />
         <Route component={NotFound} />
       </Switch>
-      <AudioBackGround isLogin={isLogin}/>
+      <AudioBackGround
+        isLogin={isLogin}
+        isPlaying={isPlaying}
+        handleResponsePlay={handleResponsePlay}
+      />
       <Footer />
-      {/* <Google isLogin={isLogin} handleResponseSuccess={handleResponseSuccess}/> */}
     </BrowserRouter>
   );
 }

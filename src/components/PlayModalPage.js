@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import UnderArrow from './UnderArrow';
-import CategoryListContents from './CategoryListContents';
+// import CategoryListContents from './CategoryListContents';
+
 const PlayModal = styled.div`
   width: 100%;
   height: 100vh;
@@ -86,7 +87,7 @@ function PlayModalPage() {
       <PlayModalInside>
         <TopImg>
           <Fillter></Fillter>
-          <img src="/img/tokyo_subway.jpg"></img>
+          <img src="/img/tokyo_subway.jpg" alt='alt'></img>
           <span
             style={{
               position: 'absolute',
@@ -102,7 +103,7 @@ function PlayModalPage() {
         </TopImg>
         <ModalText></ModalText>
 
-        <CategoryListContents />
+        {/* <CategoryListContents /> */}
       </PlayModalInside>
     </PlayModal>
   );

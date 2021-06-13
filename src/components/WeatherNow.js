@@ -5,6 +5,7 @@ import Recommends from '../components/Recommends';
 
 function WeatherNow({handlePlay}){
   const [weatherNow, setWeatherNow] = useState("");
+  const weathers = true;
   
   useEffect(()=>{
     const url = 'http://api.openweathermap.org/data/2.5/weather?q=seoul&appid=aa505028cd8fe7825b8749cb42a93954'
@@ -22,7 +23,7 @@ function WeatherNow({handlePlay}){
   return(
     <>
       {DummyDatas.map((DummyData) => {
-        console.log(weatherNow.weatherNow)
+        // console.log(weatherNow.weatherNow)
         if(weatherNow.weatherNow === DummyData.weather ) { // 더미데이터
         return (
         <Recommends 
@@ -33,6 +34,7 @@ function WeatherNow({handlePlay}){
           place={DummyData.place}
           text={DummyData.text}
           handlePlay={handlePlay}
+          weathers={weathers}
         />)
       // } else if( 700 <= weatherNow.weatherNow.id && weatherNow.weatherNow.id < 800) {
       //   <Recommends 

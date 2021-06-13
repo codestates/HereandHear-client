@@ -5,7 +5,7 @@ function Nav({ isLogin, handleLogout }) {
   return (
     <div className="NavOut">
       <div className="Nav">
-        <div className='NavLogo'><img src='/logo1-1.png'></img></div>
+        <div className='NavLogo'><img src='/logo1-1.png' alt='alt'></img></div>
         <ul>
           <li>
             <NavLink exact to="/" className="textLink">
@@ -29,7 +29,9 @@ function Nav({ isLogin, handleLogout }) {
                   Favorite
                 </NavLink>
               </li>
-              <li>
+              <li style={{
+                width: "100px"
+              }}>
                 <NavLink exact to="/play" className="textLink">
                   Play
                 </NavLink>
