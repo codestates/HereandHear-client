@@ -871,13 +871,14 @@ body {
 }
 .PlayTitle {
   /* border: solid 3px tomato; */
-  padding: 20px 50px 10px 20px;
+  padding: 20px 0px 10px 20px;
   margin: 0 150px 0 0px;
   font-size: 30px;
   font-weight: bolder;
 }
 .InfoBtn {
   cursor: pointer;
+  margin: 0 0 0 300px;
   padding: 20px;
 }
 .FavBtn {
@@ -931,9 +932,19 @@ body {
 
 .PlayRecWeathers {
   /* border: solid 7px darkblue; */
-  margin: 70% 0 100px 0;
+  margin: 700px 0 100px 0;
 }
 
 .PlayRecSeasons{
   /* border: solid 7px orange; */
+}
+
+
+/* Not found */
+
+.NotFound {
+  color: white;
+  font-size: 50px;
+  padding: 300px;
+  text-align: center;
 }

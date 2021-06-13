@@ -34,22 +34,3 @@ function SeasonNow({handlePlay}){
 }
 
 export default SeasonNow;
-
-
-
-
-// const wholeMonths = [1,2,3,4,5,6,7,8,9,10,11,12]
-// const wholeSeasons = [ // 12개월 계절별로 분화
-//   {
-//     spring: [3, 4]
-//   },
-//   {
-//     summer: [5, 6, 7, 8]
-//   },
-//   {
-//     fall: [9, 10]
-//   },
-//   {
-//     winter: [11, 12, 1, 2]
-//   }
-// ]

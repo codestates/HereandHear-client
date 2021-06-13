@@ -86,12 +86,12 @@ const DummyDatas = [
   },
   {
     id: 8,
-    weather: "Atmosphere",
+    weather: "Haze",
     theme: "Memory",
     month: 12,
-    weatherTitle: "날씨가 꾸물거리네요",
+    weatherTitle: "오늘같이 예측할 수 없는 날씨라면??",
     seasonTitle: "12월에 추천하는 여행지",
-    title: "추욱 처질때에는 도쿄 지하철 어때요?",
+    title: "이런 날에는 그냥 조용히 한바퀴 도는 도쿄 지하철 어때요?",
     place: "Tokyo, Japan",
     text: "덜컹덜컹 - 텍스트 미정",
     recImg: "/img/tokyo_subway.jpg"
