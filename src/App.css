@@ -794,35 +794,157 @@ a.textLink.active {
   z-index: 910;
   transform: translateX(-100px);
 }
+
+
+/* recommneds */
+
 .recommends {
   color: white;
   text-align: center;
-  border: solid 4px tomato;
+  /* border: solid 4px tomato; */
+  box-sizing: border-box;
+  margin: 0 80px;
+  width: 80%;
 }
 
 .recBody {
   display: flex;
   align-items: center;
   justify-content: center;
-  border: solid 3px seagreen;
+  /* border: solid 3px seagreen; */
+}
+
+.recIntroTitle {
+  text-align: left;
+  font-size: 30px;
+  font-weight: bolder;
+}
+
+.recImg {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+.recDetail {
+  text-align: left;
+  margin: 50px;
+}
+
+.recTitle {
+  margin: 20px;
+  font-size: 30px;
+}
+
+.recPlace {
+  margin: 20px;
+  font-weight: bolder;
+}
+
+.recText {
+  margin: 20px;
+}
+
+.getDown {
+  font-size: 1.2rem;
+  transition: all 0.4s;
+  letter-spacing: 0.1rem;
+  cursor: pointer;
+  /* border: solid 3px white; */
+}
+.getDown:hover {
+  letter-spacing: 0.3rem;
+}
+.getDown:active {
+  transform: translateY(10px);
+}
+.getDownBtn {
+  width: 0px;
+  height: 0px;
+  margin-top: 20px;
+  border-bottom:30px solid none;
+  border-top:30px solid gray;
+  border-right: 30px solid transparent;
+  border-left: 30px solid  transparent;
 }
 
 .recButtons {
-  display: flexbox;
+  /* border: solid 5px plum; */
+  display: flex;
+  flex-direction: column;
+  margin: 10px 40%;
+  width: 30%;
+}
+
+.goPlayPage {
+  background-color: #00acee;
+  color: white;
+  /* border: 1px solid #fff; */
+  font-size: 1.2rem;
+  /* text-align: center; */
+  transition: all 0.4s;
+  letter-spacing: 0.1rem;
+  cursor: pointer;
+  /* padding: 15px;
+  height: 50px; */
+  padding:20px;
+}
+.goPlayPage:hover {
+  letter-spacing: 0.3rem;
+}
+.goPlayPage:active {
+  transform: translateY(10px);
+}
+
+.getPlay {
+  background-color: #00acee;
+  color: white;
+  cursor: pointer;
+  padding: 20px;
+  font-size: 1.2rem;
+  transition: all 0.4s;
+  letter-spacing: 0.1rem;
+}
+.getPlay:hover {
+  letter-spacing: 0.3rem;
+}
+.getPlay:active {
+  transform: translateY(10px);
+}
+
+.skip {
+  margin: 30px;
+  cursor: pointer;
+  background-color: black;
+  color: white;
+  font-size: 1rem;
+  transition: all 0.4s;
+  letter-spacing: 0.1rem;
+}
+.skip:hover {
+  letter-spacing: 0.3rem;
+}
+.skip:active {
+  transform: translateY(10px);
 }
 
 .RecWeathers {
   background-color: black;
-  border: solid 7px darkblue;
+  margin: 100px 0;
+  /* border: solid 7px darkblue; */
 }
 
 .RecSeasons {
   background-color: black;
-  border: solid 7px orange;
+  /* border: solid 7px orange; */
 }
 
-/* 플레이 */
+
+/* play */
+
 .View {
+  position: absolute;
+  z-index: 3;
   box-sizing: border-box;
   width: 100%;
   color: white;
@@ -833,38 +955,61 @@ a.textLink.active {
   align-items: center;
 }
 
+.ViewImg {
+  z-index: -3;
+  position: absolute;
+  opacity: 0.3;
+  width: 100%;
+  height: 1000px;
+}
+
 .ContentsPlayer {
-  border: solid 5px orange;
+  /* border: solid 5px orange; */
   padding: 50px 150px;
 }
 
 .PlayHead {
-  border: solid 5px darkblue;
+  /* border: solid 5px darkblue; */
   display: flex;
-  padding: 20px 250px;
+  padding: 20px 0px 0 0;
   justify-content: space-between;
 }
-
-.PlayBody {
-  border: solid 3px seagreen;
-  /* padding: 100px 150px; */
-}
-
 .PlayTitle {
-  border: solid 4px tomato;
+  /* border: solid 3px tomato; */
+  padding: 20px 0px 10px 20px;
+  margin: 0 150px 0 0px;
+  font-size: 30px;
+  font-weight: bolder;
 }
-
-.BodyPlace {
-  border: solid 3px azure;
+.InfoBtn {
+  cursor: pointer;
+  margin: 0 0 0 300px;
+  padding: 20px;
+}
+.FavBtn {
+  cursor: pointer;
   padding: 20px;
 }
 
+.PlayBody {
+  /* border: solid 3px seagreen; */
+  /* padding: 100px 150px; */
+}
+
+.BodyPlace {
+  /* border: solid 3px azure; */
+  padding: 10px 20px 10px 20px;
+  font-size: 20px;
+}
+
 .BodyText {
-  border: solid 3px red;
-  padding: 100px;
+  /* border: solid 3px red; */
+  padding: 10px 10px 100px 20px;
+  text-align: left;
 }
 
 .PlayRecommneds {
+  position: absolute;
   flex-direction: column;
   display: flex;
   width: 100%;
@@ -873,232 +1018,38 @@ a.textLink.active {
   /* align-items: center; */
 }
 
+.PlayFooter {
+  /* justify-content: center; */
+  justify-content: space-between;
+  padding: 0 200px;
+  display: flex;
+}
+.PlayBtn {
+  margin: 20px;
+  padding: 20px;
+  cursor: pointer;
+}
+.PauseBtn {
+  margin: 20px;
+  padding: 20px;
+  cursor: pointer;
+}
+
 .PlayRecWeathers {
-  border: solid 7px darkblue;
+  /* border: solid 7px darkblue; */
+  margin: 700px 0 100px 0;
 }
 
-.PlayRecSeasons {
-  border: solid 7px orange;
+.PlayRecSeasons{
+  /* border: solid 7px orange; */
 }
 
-/* 로딩페이지 창  */
 
-.LoadingPage {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100vh;
-  background: #000;
-  z-index: 1000;
-}
-
-.Loader {
-  position: relative;
-  width: 100%;
-  text-align: center;
-}
-.Loader::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: -25%;
-  width: 100%;
-  height: 50%;
-  background-color: #000;
-  z-index: 9;
-  transform: scaleX(0);
-  animation: line 0.8s linear 0s;
-}
-
-.Loader::after {
-  content: '';
-  position: absolute;
-  left: 0;
-  bottom: -25%;
-  width: 100%;
-  height: 50%;
-  background-color: #000;
-  z-index: 9;
-  transform: scaleX(0);
-  animation: line 0.8s linear 0s;
-}
-@keyframes line {
-  0% {
-    transform: scaleX(1);
-  }
-}
-
-h4 {
-  color: #fff;
-  letter-spacing: 15px;
-  margin: 15px 0;
-  font-size: 1rem;
-  opacity: 1;
-  animation: textBlink 0.125s linear 0.8s infinite;
-}
-
-@keyframes textBlink {
-  50% {
-    opacity: 0.3;
-  }
-}
-
-.LoadingLine {
-  position: absolute;
-  width: 100%;
-  height: 2px;
-  background: linear-gradient(to left, transparent, #fff, transparent);
-}
-
-.LoadingLine::before {
-  content: '';
-  position: absolute;
-  width: 25px;
-  height: 25px;
-  left: 0;
-  right: 0;
-  top: -12px;
-  background-color: #fff;
-  border-radius: 50%;
-  margin: 0 auto;
-  transform: scale(0);
-  animation: dot 2s ease 0.8s;
-}
-
-@keyframes dot {
-  100% {
-    transform: scale(3);
-    opacity: 0;
-  }
-}
-
-/* UnderArrow */
-
-.UnderArrow {
-  position: absolute;
-  bottom: 10%;
-}
-.UnderArrow div {
-  width: 30px;
-  height: 30px;
-  border-bottom: 5px solid #fff;
-  border-right: 5px solid #fff;
-  transform: rotate(45deg);
-  margin: -10px;
-  animation: underArrow 2s infinite;
-}
-.UnderArrow div:nth-child(2) {
-  animation-delay: 0.4s;
-}
-.UnderArrow div:nth-child(3) {
-  animation-delay: 0.6s;
-}
-
-@keyframes underArrow {
-  0% {
-    opacity: 0;
-    transform: rotate(45deg), translate(-20px, -20px);
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-    transform: rotate(45deg), translate(20px, 20px);
-  }
-}
-
-/* 오디오 플레이어  */
-
-.AudioBackGround {
-  position: absolute;
-  z-index: 910;
-  width: 350px;
-  height: 60px;
-  background: transparent;
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-  border-radius: 30px;
-  border: 1px solid #fff;
-  background: #ccc;
-  cursor: move;
-  bottom: 30px;
-  left: 30px;
-}
-
-.AudioBackGround button {
-  background: transparent;
-  border: 1px solid #fff;
-  width: 40px;
-  height: 40px;
-  border-radius: 20px;
-  color: #fff;
-}
-
-.AudioBackGround span {
-  color: #fff;
-}
-
-/* NotFound */
+/* Not found */
 
 .NotFound {
-  background-image: url('./img/notfound.jpg');
-  background-size: cover;
-  width: 100%;
-  min-width: 1500px;
-  height: 100vh;
-  min-height: 800px;
-  z-index: 999;
-  position: absolute;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.NotFound::before {
-  content: '';
-  position: absolute;
-  background-color: #000;
-  width: 100%;
-  height: 100%;
-  opacity: 0.4;
-}
-.NotFound > h1 {
-  color: #fff;
-  font-size: 7rem;
-  margin-bottom: 50px;
-  z-index: 999;
-  user-select: none;
-}
-.NotFoundBtn {
-  width: 250px;
-  height: 40px;
+  color: white;
+  font-size: 50px;
+  padding: 300px;
   text-align: center;
-  line-height: 40px;
-  color: #fff;
-  background-color: #00acee;
-  z-index: 999;
-  border-radius: 20px;
-  transition: 0.8s all;
-}
-.NotFoundBtn:hover {
-  letter-spacing: 0.2rem;
-}
-
-/* PlayModal */
-
-.PlayModal {
-  -ms-overflow-style: none;
-}
-
-.PlayModal::-webkit-scrollbar {
-  display: none;
-}
-
-.ModalArrow {
-  left: 50%;
-  transform: translateX(-50%);
 }

@@ -1,9 +1,9 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import RecWeathers from '../documents/RecWeathers';
+import DummyDatas from '../documents/DummyDatas';
 import Recommends from '../components/Recommends';
 
-function WeatherNow({handlePlay, isPlay}){
+function WeatherNow({handlePlay}){
   const [weatherNow, setWeatherNow] = useState("");
   
   useEffect(()=>{
@@ -12,25 +12,38 @@ function WeatherNow({handlePlay, isPlay}){
     axios.get(url)
     .then((res) => res.data)
     .then((res) => {
+      // console.log(res)
       setWeatherNow({weatherNow: res.weather[0].main})
+      // res.weather[0].main === 날씨
+      // res.weather[0].id === 700번대면~ atmosphere가 문제있는거임
     })
   },[])
 
   return(
     <>
-      {RecWeathers.map((weather) => {
-        // console.log(weatherNow.weatherNow)
-        if(weatherNow.weatherNow === weather.id ) { // 더미데이터
+      {DummyDatas.map((DummyData) => {
+        console.log(weatherNow.weatherNow)
+        if(weatherNow.weatherNow === DummyData.weather ) { // 더미데이터
         return (
         <Recommends 
-          key={weather.id}
-          introTitle={weather.introTitle}
-          title={weather.title}
-          place={weather.place}
-          text={weather.text}
+          key={DummyData.id}
+          introTitle={DummyData.weatherTitle}
+          recImg={DummyData.recImg}
+          title={DummyData.title}
+          place={DummyData.place}
+          text={DummyData.text}
           handlePlay={handlePlay}
-          isPlay={isPlay}
         />)
+      // } else if( 700 <= weatherNow.weatherNow.id && weatherNow.weatherNow.id < 800) {
+      //   <Recommends 
+      //     key={DummyData.id === 8}
+      //     introTitle={DummyData.weatherTitle}
+      //     recImg={DummyData.recImg}
+      //     title={DummyData.title}
+      //     place={DummyData.place}
+      //     text={DummyData.text}
+      //     handlePlay={handlePlay}
+      //   />
       } else {
         return '';
       }

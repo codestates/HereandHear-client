@@ -22,7 +22,6 @@ function Home({isLogin}) {
         </video>
         {isLogin ? ( <UnderArrow />):(<></>)}
       </div>
-      {/* 추천 */}
       {
         isLogin
         ? <>

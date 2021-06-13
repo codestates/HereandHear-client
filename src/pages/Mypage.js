@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 
 function Mypage(props) {
   const [nickName, setNickName] = useState('');

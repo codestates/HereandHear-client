@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
-import FavoriteContents from './pages/FavoriteContents';
+import Favorite from './pages/Favorite';
 import Home from './pages/Home';
 import Mypage from './pages/Mypage';
 import Play from './pages/Play';
@@ -10,7 +10,7 @@ import NotFound from './pages/NotFound';
 import Category from './pages/Category';
 import Nav from './components/Nav';
 import Footer from './components/Footer';
-import Google from './components/Google';
+// import Google from './components/Google';
 import './App.css';
 
 import AudioBackGround from './components/AudioBackGround';
@@ -60,22 +60,26 @@ function App() {
         />
         <Route path="/signup" render={() => <SignUp />} />
         <Route path="/play" 
-          // render={() => {
-          //   if(!isLogin) {
-          //     return <Redirect to="/signin" />
-          //   } else {
-          //     return (
-          //     <Play           
-          //       isPlay={isPlay}
-          //       handlePlay={handlePlay}
-          //     />)
-          //   }
-          // }} 
-          component={Play}
-          
-          />
-        <Route path="/favoritecontents" render={() => <FavoriteContents />} />
-        <Route exact path="/" render={() => <Home isLogin={isLogin} />} />
+          render={() => {
+            if(!isLogin) {
+              return <Redirect to="/signin" />
+            } else {
+              return (
+              <Play           
+                isPlay={isPlay}
+                handlePlay={handlePlay}
+              />)
+            }
+          }} />
+        <Route 
+          path="/favorite" 
+          handlePlay={handlePlay}
+          isLogin={isLogin}
+          render={() => <Favorite />} 
+        />
+        <Route exact path="/" render={() => 
+          <Home isLogin={isLogin} />} 
+        />
         <Route component={NotFound} />
       </Switch>
       <AudioBackGround isLogin={isLogin}/>
