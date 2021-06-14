@@ -10,6 +10,7 @@
   padding: 0;
   user-select: none;
 }
+
 ul {
   list-style: none;
 }
@@ -161,6 +162,7 @@ a.textLink.active {
   display: flex;
   align-items: center;
   justify-content: center;
+  -ms-overflow-style: none;
 }
 
 .BackGround {
@@ -411,12 +413,8 @@ a.textLink.active {
 }
 
 .SignInUl > li:nth-child(5) {
-  height: 40px;
+  height: 60px;
   /* border: 1px solid #00acee; */
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
 }
 
 .LoginToggle {
@@ -564,6 +562,7 @@ a.textLink.active {
 .FavoriteUl > li:hover > img {
   transform: scale(1.1);
 }
+
 .FavoriteUl > li > img {
   width: 200px;
   height: 300px;
@@ -576,9 +575,21 @@ a.textLink.active {
 }
 .FavoriteUl > li > span {
   margin-top: 10px;
+  z-index: 999;
 }
 .FavoriteUl > li > span:nth-of-type(1) {
   font-weight: 700;
+}
+.FavoriteFilter {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, #00000010, 70%, #000000bf);
+  position: absolute;
+  inset: 0;
+  transition: 1s all;
+}
+.FavoriteUl > li:hover > .FavoriteFilter {
+  background: transparent;
 }
 
 .FavoriteDeleteBtn {

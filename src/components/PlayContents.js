@@ -101,21 +101,21 @@ const PlayTitle = styled.div`
   width: 450px;
   font-size: 3rem;
   margin-bottom: 20px;
-  z-index: 999;
+  z-index: 998;
   /* border: 1px solid red; */
 `;
 
 const PlayPlace = styled.div`
   width: 450px;
   font-size: 1rem;
-  z-index: 999;
+  z-index: 998;
   /* border: 1px solid red; */
 `;
 
 const PlayBtnsContainer = styled.div`
   width: 70%;
   height: 200px;
-  z-index: 999;
+  z-index: 998;
   /* border: 1px solid yellow; */
 `;
 
@@ -185,24 +185,30 @@ const FavoriteBtn = styled.div`
 function PlayContents(props) {
   const { title, place, recImg } = DummyDatas[0];
   // 현재는 일시적인 더미데이터. 추후 Recommneds에서 버튼을 누르면, 해당 데이터를 서버 통신 => db 경로 획득 => 서버 데이터 획득 => 클라이언트 렌더링을 해야 한다.
-  const { isPlaying,handleResponsePlay } = props;
+  const { isPlaying, handleResponsePlay, handleView, isView } = props;
+  console.log(props);
 
-  console.log(isPlaying,'---sdsd');
+  console.log(isPlaying, '---sdsd');
   const [loading, setLoading] = useState(false);
   setTimeout(() => {
     setLoading(true);
   }, 2000);
 
+  const ModalPage = () => {
+    console.log('인포버튼');
+    handleView(isView);
+  };
+
   const AudioPlay = () => {
-   console.log('재생버튼')
-   document.getElementsByClassName('audio_origin')[0].play();
-   handleResponsePlay(true);
+    console.log('재생버튼');
+    document.getElementsByClassName('audio_origin')[0].play();
+    handleResponsePlay(true);
   };
 
   const AudioPause = () => {
-   console.log('정지버튼')
-   document.getElementsByClassName('audio_origin')[0].pause();
-   handleResponsePlay(false);
+    console.log('정지버튼');
+    document.getElementsByClassName('audio_origin')[0].pause();
+    handleResponsePlay(false);
   };
 
   if (loading) {
@@ -220,7 +226,7 @@ function PlayContents(props) {
               <li>
                 <PlayBtnsContainer>
                   <InfoFavoriteOut>
-                    <InfoBtn></InfoBtn>
+                    <InfoBtn onClick={ModalPage}></InfoBtn>
                     <FavoriteBtn></FavoriteBtn>
                   </InfoFavoriteOut>
                   <PlayBtneOut>

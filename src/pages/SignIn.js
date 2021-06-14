@@ -1,20 +1,34 @@
 import React, { useState } from 'react';
+// import { useEffect } from 'react';
 import { withRouter, Link } from 'react-router-dom';
 // import axios from 'axios';
 import BackGroundVideo2 from '../video/background2.mp4';
-import GoogleLogo from '../icon/google.png';
+// import GoogleLogo from '../icon/google.png';
 // import Google from '../components/Google';
 
 function SignIn(props) {
   // console.log(props);
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
+  const [errMessage, setErrMessage] = useState('');
+
+
   const login = (event) => {
     event.preventDefault();
-    if (id === '' || password === '') {
-      console.log('아이디나 패스워드를 입력해주세요');
-      return;
-    } else {
+    if (id === '' ) {
+      // console.log('아이디를 입력해주세요');
+      setErrMessage('아이디를 입력해주세요');
+      setTimeout(()=>{
+        setErrMessage('');
+      },2000)
+    } else if(password ===''){
+      // console.log('패스워드를 입력해주세요');
+      setErrMessage('패스워드를 입력해주세요');
+      setTimeout(()=>{
+        setErrMessage('');
+      },2000)
+    }
+    else {
       props.handleResponseSuccess();
       props.history.push('/');
     }
@@ -51,7 +65,21 @@ function SignIn(props) {
     <div className="SignIn">
       <form onSubmit={(e) => e.preventDefault()}>
         <ul className="SignInUl">
-          <li>MEMBER LOGIN</li>
+          {errMessage==="" ?  
+          <li>
+            MEMBER LOGIN
+            </li>
+          :
+          <li  style={{
+            display: 'flex',
+            justifyContent: 'center',
+            backgroundColor: 'transparent',
+            zIndex: '15',
+            alignItems: 'center',
+            borderBottom: '4px solid #d21c38',
+            fontSize: '1.2rem',
+          }}>{errMessage}</li>  
+          }
           <li>
             <div className="UserNameIcon"></div>
             <input
@@ -75,15 +103,17 @@ function SignIn(props) {
             </button>
           </li>
           <li>
-            <div>
+            {/* <div>
               <div className="LoginToggle">
                 <div className="LoginToggleBtn"></div>
               </div>
             </div>
             <div className="SocialLogin">
-              {/* <Google isLogin={props.isLogin} handleResponseSuccess={props.handleResponseSuccess}/> */}
               <img src={GoogleLogo} alt="google" />
-            </div>
+            </div> */}
+             <button type="submit" className="SignInBtn" onClick={login}>
+              카카오 로그인
+            </button>
           </li>
           <li>
             <span>
