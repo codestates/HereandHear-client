@@ -19,6 +19,7 @@ function CategoryList({ handleCategoty }) {
             id="Remember"
             onChange={handleRadio}
             value="remember"
+            defaultChecked
           ></input>
           <label htmlFor="Remember">
             <span className="CategoryTitle">REMEMBER</span>

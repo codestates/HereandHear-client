@@ -5,6 +5,7 @@ import Recommends from '../components/Recommends';
 
 function WeatherNow({handlePlay}){
   const [weatherNow, setWeatherNow] = useState("");
+  const weathers = true;
   
   useEffect(()=>{
     const url = 'http://api.openweathermap.org/data/2.5/weather?q=seoul&appid=aa505028cd8fe7825b8749cb42a93954'

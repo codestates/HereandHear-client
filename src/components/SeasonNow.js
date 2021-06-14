@@ -5,7 +5,7 @@ import Recommends from './Recommends';
 function SeasonNow({handlePlay}){
   const [ monthNow, setMonthNow ] = useState(0);
   const month = new Date().getMonth() + 1; // 이렇게 하면 현재 달 나옴
-
+  const weathers = false;
   useEffect(() => {
     setMonthNow(month)
   },[month])
@@ -23,6 +23,7 @@ function SeasonNow({handlePlay}){
             place={DummyData.place}
             text={DummyData.text}
             handlePlay={handlePlay}
+            weathers={weathers}
           />)
         } else {
           return '';

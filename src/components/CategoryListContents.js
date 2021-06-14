@@ -56,16 +56,18 @@ const Image = styled.img`
 `;
 
 const items = [
-  { id: 1 },
-  { id: 2 },
-  { id: 3 },
-  { id: 4 },
-  { id: 5 },
-  { id: 6 },
-  { id: 7 },
-  { id: 8 },
-  { id: 9 },
-  { id: 10 },
+  { id: '도쿄 지하철',url:'/img/tokyo_subway.jpg' },
+  { id: '도쿄 지하철',url:'/img/seoul.jpg' },
+  { id: '도쿄 지하철',url:'/img/sapporo.jpg' },
+  { id: '도쿄 지하철' ,url:'/img/tokyo_subway.jpg'},
+  { id: '도쿄 지하철',url:'/img/sapporo.jpg' },
+  { id: '도쿄 지하철',url:'/img/seoul.jpg'  },
+  { id: '도쿄 지하철',url:'/img/sapporo.jpg' },
+  { id: '도쿄 지하철' ,url:'/img/tokyo_subway.jpg'},
+  { id: '도쿄 지하철',url:'/img/seoul.jpg'  },
+  { id: '도쿄 지하철',url:'/img/sapporo.jpg' },
+
+ 
 ];
 
 function CategoryListContents(props) {
@@ -94,18 +96,28 @@ function CategoryListContents(props) {
             return (
               <div key={item.id} onClick={MovePlay}>
                 <ImageContainer>
-                  <Image src="/img/tokyo_subway.jpg" />
-                  <span
+                  <Image src={item.url} />
+                  <div
                     style={{
                       color: '#fff',
-                      fontSize: '1rem',
+                      fontSize: '2rem',
                       position: 'absolute',
-                      bottom: '20px',
+                      bottom: '80px',
                       left: '20px',
                     }}
                   >
                     {item.id}
-                  </span>
+                  </div>
+                  <div
+                   style={{
+                    color: '#fff',
+                    fontSize: '1rem',
+                    position: 'absolute',
+                    bottom: '40px',
+                    left: '20px',
+                  }}>
+                  Tokyo, Japan
+                  </div>
                 </ImageContainer>
               </div>
             );
