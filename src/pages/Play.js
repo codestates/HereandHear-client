@@ -21,9 +21,9 @@ function Play(props) {
           <div className="PlayRecSeasons">
             <SeasonNow handlePlay={handlePlay}/>
           </div>
-          <div className="PlayLocations">
+          {/* <div className="PlayLocations">
             <LocationNow handlePlay={handlePlay}/>
-          </div>
+          </div> */}
         </div>
       }
       {/* <PlayModalPage></PlayModalPage> */}
