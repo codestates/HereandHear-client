@@ -929,14 +929,18 @@ a.textLink.active {
 }
 
 .RecWeathers {
-  background-color: black;
+  /* background-color: black; */
   margin: 100px 0;
   /* border: solid 7px darkblue; */
 }
-
 .RecSeasons {
-  background-color: black;
+  margin: 0 0 100px 0;
+  /* background-color: black; */
   /* border: solid 7px orange; */
+}
+.RecLocations {
+  color: white;
+  margin: 0 0 100px 0;
 }
 
 
@@ -1037,11 +1041,13 @@ a.textLink.active {
 
 .PlayRecWeathers {
   /* border: solid 7px darkblue; */
-  margin: 700px 0 100px 0;
+  margin: 1500px 0 100px 0;
 }
-
-.PlayRecSeasons{
+.PlayRecSeasons {
   /* border: solid 7px orange; */
+}
+.PlayLocations {
+  margin: 100px 0;
 }
 
 

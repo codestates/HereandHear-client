@@ -3,6 +3,7 @@ import BackGroundVideo from '../video/background.mp4';
 import WeatherNow from '../components/WeatherNow';
 import SeasonNow from '../components/SeasonNow';
 import UnderArrow from '../components/UnderArrow';
+import LocationNow from '../components/LocationNow';
 function Home({isLogin}) {
 
 
@@ -30,6 +31,9 @@ function Home({isLogin}) {
             </div>
             <div className="RecSeasons">
               <SeasonNow />
+            </div>
+            <div className="RecLocations">
+              <LocationNow />
             </div>
           </> 
         : <></>
