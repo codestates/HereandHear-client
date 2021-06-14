@@ -6,6 +6,26 @@ import UnderArrow from '../components/UnderArrow';
 import LocationNow from '../components/LocationNow';
 function Home({isLogin}) {
 
+  // 스크롤 때문에 프롭스 내려주려 함.
+  const weatherScroll = 'rec1'
+  const seasonScroll = 'rec2'
+  const locationScroll = 'rec3'
+
+  // 홈페이지 창 y축 포지션 확인 스테이트
+  // const [position, setPosition] = useState(0);
+  // const onScroll = () => {
+  //   // console.log(window.scrollY)
+  //   setPosition(window.scrollY);
+  // }
+  // useEffect(() => {
+  //   window.addEventListener("scroll", onScroll);
+  //   return () => {
+  //     window.removeEventListener("scroll", onScroll);
+  //   };
+  // }, []);
+
+
+
   const [ScrollY, setScrollY] = useState(0);
   const [isArrow, setArrow] =useState(true);
   const handleFollow = () => {
@@ -51,10 +71,9 @@ function Home({isLogin}) {
       {
         isLogin
         ? <>
-
-              <WeatherNow/>
-              <SeasonNow className='SeasonNow'/>
-              <LocationNow />
+            <WeatherNow weatherScroll={weatherScroll}/>
+            <SeasonNow seasonScroll={seasonScroll} className='SeasonNow'/>
+            <LocationNow locationScroll={locationScroll} />
           </> 
         : <></>
       }

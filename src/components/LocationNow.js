@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import KakaoMapAPI from './KakaoMapAPI';
 
-function LocationNow({handlePlay}){
+function LocationNow({handlePlay, locationScroll}){
 
 
   const [latitude, setLatitude] = useState('');
   const [longitude, setLongitude] = useState('');
+
+  // console.log(locationScroll) // rec3
 
   useEffect(() => {
     if(navigator.geolocation) {
@@ -17,15 +19,18 @@ function LocationNow({handlePlay}){
       })
     } else {
       console.log("Geolocation is not supported by this browser.")
+      return (<></>)
     }
-  })
+  }, [latitude, longitude]);
 
   return (
     <div>
       <KakaoMapAPI 
+        key={latitude}
         latitude={latitude} 
         longitude={longitude} 
         handlePlay={handlePlay}
+        locationScroll={locationScroll}
       />
     </div>
   )

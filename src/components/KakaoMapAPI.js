@@ -2,14 +2,14 @@ import React, { useEffect, useState } from 'react';
 import DummyDatas from '../documents/DummyDatas';
 import Recommends from './Recommends';
 
-function KakaoMapAPI({ latitude, longitude, handlePlay }){
+function KakaoMapAPI({ latitude, longitude, handlePlay, locationScroll }){
   const {kakao} = window;
   const [ address, setAddress ] = useState("");
 
   useEffect(()=> {
     const geocoder = new kakao.maps.services.Geocoder();
     const coord = new kakao.maps.LatLng(latitude, longitude);
-    console.log(coord) // 콘솔창에서 위도경도 받는 시간 확인
+    // console.log(coord) // 콘솔창에서 위도경도 받는 시간 확인
     const callback = function(result, status) {
         if (status === kakao.maps.services.Status.OK) {
           setAddress(result[0].address.region_1depth_name)
@@ -33,6 +33,7 @@ function KakaoMapAPI({ latitude, longitude, handlePlay }){
                     place={DummyData.place}
                     text={DummyData.text}
                     handlePlay={handlePlay}
+                    locationScroll={locationScroll}
                   />)
                 }
               })}
