@@ -1,5 +1,4 @@
 import React,{useState} from 'react';
-import { useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 import PlayContents from '../components/PlayContents';
 import PlayModalPage from '../components/PlayModalPage';

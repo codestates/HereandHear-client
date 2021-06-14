@@ -1049,11 +1049,13 @@ a.textLink.active {
 
 .PlayRecWeathers {
   /* border: solid 7px darkblue; */
-  margin: 700px 0 100px 0;
+  margin: 1500px 0 100px 0;
 }
-
 .PlayRecSeasons {
   /* border: solid 7px orange; */
+}
+.PlayLocations {
+  margin: 100px 0;
 }
 
 /* Not found */

@@ -3,6 +3,7 @@ import BackGroundVideo from '../video/background.mp4';
 import WeatherNow from '../components/WeatherNow';
 import SeasonNow from '../components/SeasonNow';
 import UnderArrow from '../components/UnderArrow';
+import LocationNow from '../components/LocationNow';
 function Home({isLogin}) {
 
   const [ScrollY, setScrollY] = useState(0);
@@ -50,9 +51,10 @@ function Home({isLogin}) {
       {
         isLogin
         ? <>
-          
+
               <WeatherNow/>
               <SeasonNow className='SeasonNow'/>
+              <LocationNow />
           </> 
         : <></>
       }

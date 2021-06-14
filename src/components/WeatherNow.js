@@ -23,32 +23,21 @@ function WeatherNow({handlePlay}){
   return(
     <>
       {DummyDatas.map((DummyData) => {
-        // console.log(weatherNow.weatherNow)
+        // console.log(weatherNow)
         if(weatherNow.weatherNow === DummyData.weather ) { // 더미데이터
         return (
-        <Recommends 
-          key={DummyData.id}
-          introTitle={DummyData.weatherTitle}
-          recImg={DummyData.recImg}
-          title={DummyData.title}
-          place={DummyData.place}
-          text={DummyData.text}
-          handlePlay={handlePlay}
-          weathers={weathers}
-        />)
-      // } else if( 700 <= weatherNow.weatherNow.id && weatherNow.weatherNow.id < 800) {
-      //   <Recommends 
-      //     key={DummyData.id === 8}
-      //     introTitle={DummyData.weatherTitle}
-      //     recImg={DummyData.recImg}
-      //     title={DummyData.title}
-      //     place={DummyData.place}
-      //     text={DummyData.text}
-      //     handlePlay={handlePlay}
-      //   />
-      } else {
-        return '';
-      }
+          <Recommends 
+            key={DummyData.id}
+            introTitle={DummyData.weatherTitle}
+            recImg={DummyData.recImg}
+            title={DummyData.title}
+            place={DummyData.place}
+            text={DummyData.text}
+            handlePlay={handlePlay}
+          />)
+        } else {
+          return '';
+        }
       })}
     </>
   )
