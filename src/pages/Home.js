@@ -1,37 +1,37 @@
-import React ,{useState,useEffect}from 'react';
+import React, { useState, useEffect } from 'react';
 import BackGroundVideo from '../video/background.mp4';
 import WeatherNow from '../components/WeatherNow';
 import SeasonNow from '../components/SeasonNow';
 import UnderArrow from '../components/UnderArrow';
-import LocationNow from '../components/LocationNow';
-function Home({isLogin}) {
+// import LocationNow from '../components/LocationNow';
+// import axios from 'axios';
 
+function Home({ isLogin ,handleResponseSuccess}) {
   const [ScrollY, setScrollY] = useState(0);
-  const [isArrow, setArrow] =useState(true);
+  const [isArrow, setArrow] = useState(true);
   const handleFollow = () => {
-    setScrollY(window.pageYOffset); 
-    if(ScrollY>300){
+    setScrollY(window.pageYOffset);
+    if (ScrollY > 300) {
       setArrow(false);
-    }else{
+    } else {
       setArrow(true);
     }
-  }
+  };
 
   // useEffect(() => {
-  //   // console.log("ScrollY is ", ScrollY); 
+  //   // console.log("ScrollY is ", ScrollY);
   // }, [ScrollY])
 
 
   useEffect(() => {
     const watch = () => {
       window.addEventListener('scroll', handleFollow);
-    }
-    watch(); 
+    };
+    watch();
     return () => {
-      window.removeEventListener('scroll', handleFollow); 
-    }
-  })
-
+      window.removeEventListener('scroll', handleFollow);
+    };
+  });
 
   return (
     <>
@@ -46,20 +46,18 @@ function Home({isLogin}) {
         <video className="BackGround" autoPlay muted loop>
           <source src={BackGroundVideo} type="video/mp4"></source>
         </video>
-        {isLogin&& isArrow ? ( <UnderArrow />):(<></>)}
+        {isLogin && isArrow ? <UnderArrow /> : <></>}
       </div>
-      {
-        isLogin
-        ? <>
-
-              <WeatherNow/>
-              <SeasonNow className='SeasonNow'/>
-              <LocationNow />
-          </> 
-        : <></>
-      }
+      {isLogin ? (
+        <>
+          <WeatherNow />
+          <SeasonNow className="SeasonNow" />
+          {/* <LocationNow /> */}
+        </>
+      ) : (
+        <></>
+      )}
     </>
   );
 }
 export default Home;
-

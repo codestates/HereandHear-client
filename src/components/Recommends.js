@@ -57,7 +57,6 @@ function Recommends({
               바로 떠나기
             </div>
           )}
-          <div className="recGoSkipBtn">Skip</div>
         </li>
       </ul>
     </div>

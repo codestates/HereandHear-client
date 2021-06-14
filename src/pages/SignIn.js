@@ -29,31 +29,25 @@ function SignIn(props) {
       },2000)
     }
     else {
+      sessionStorage.setItem('id', id);
       props.handleResponseSuccess();
       props.history.push('/');
     }
   };
 
-  //axios 코드 추가
-  //   axios
-  //   .post(
-  //     'https://localhost:80/user/signin',
-  //     {
-  //       email: id,
-  //       password: password,
-  //     },
-  //     {
-  //       'Content-Type': 'application/json',
-  //       withCredentials: true,
-  //     },
-  //   )
-  //   .then((data) => {
-  //     console.log('data === ', data);
-  //     props.handleResponseSuccess(data);
-  //     props.history.push('/');
-  //   });
-  // };
-
+  const Kakaologin=()=>{
+      const REST_API_KEY = '486e2bb9e00eb478cc738f9c518eb926'
+      const REDIRECT_URI = 'http://localhost:3000'
+      // window.location.assign(`https://accounts.google.com/o/oauth2/v2/auth?scope=https%3A//www.googleapis.com/auth/drive.metadata.readonly&access_type=offline&include_granted_scopes=true&response_type=code&redirect_uri=http://localhost:3000&client_id=363735681458-sh03c6tq4t78465q3906gor08cfcrari.apps.googleusercontent.com`)
+      window.location.assign(`https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`)
+      .then((res) => {
+        console.log(res)
+      })
+      .catch((err) => {
+        console.error(err)
+      })
+  }
+  
   const handleId = (e) => {
     setId(e.target.value);
   };
@@ -111,8 +105,8 @@ function SignIn(props) {
             <div className="SocialLogin">
               <img src={GoogleLogo} alt="google" />
             </div> */}
-             <button type="submit" className="SignInBtn" onClick={login}>
-              카카오 로그인
+             <button type="submit" className="SignInBtnKaKao" onClick={Kakaologin}>
+             Login with Kakao
             </button>
           </li>
           <li>

@@ -122,7 +122,7 @@ function PlayModalPage({ handleView, isView }) {
           <ModalCloseBtn onClick={ModalPage}>X</ModalCloseBtn>
           <TopImg>
             <Fillter></Fillter>
-            <img src="img/seoul.jpg"></img>
+            <img src="img/seoul.jpg" alt="이미지"></img>
           </TopImg>
           <Title>서울 광화문</Title>
           <Place>Seoul, Korea</Place>

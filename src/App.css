@@ -71,6 +71,7 @@ body {
 }
 .NavLogo:hover {
   opacity: 1;
+  transform: translateY(10px) scale(1.1);
 }
 .NavLogo > img {
   width: 30px;
@@ -408,15 +409,6 @@ a.textLink.active {
   letter-spacing: 0.2rem;
 }
 
-.SignInUl > li:nth-child(4) {
-  margin-bottom: 20px;
-}
-
-.SignInUl > li:nth-child(5) {
-  height: 60px;
-  /* border: 1px solid #00acee; */
-}
-
 .LoginToggle {
   display: inline-block;
   width: 75px;
@@ -498,6 +490,22 @@ a.textLink.active {
   letter-spacing: 0.3rem;
 }
 .SignInBtn:active {
+  transform: translateY(10px);
+}
+
+.SignInBtnKaKao {
+  width: 100%;
+  height: 100%;
+  color: #000;
+  background-color: #fee500;
+  font-size: 1.2rem;
+  transition: all 0.4s;
+  letter-spacing: 0.1rem;
+}
+.SignInBtnKaKao:hover {
+  letter-spacing: 0.3rem;
+}
+.SignInBtnKaKao:active {
   transform: translateY(10px);
 }
 
@@ -1116,27 +1124,55 @@ a.textLink.active {
   align-items: center;
   justify-content: space-evenly;
   border-radius: 30px;
-  border: 1px solid #fff;
-  background: #ccc;
-  opacity: 1;
+  /* background: #ccc; */
+  border: 1px solid #ccc;
+  opacity: 0.3;
   cursor: pointer;
   bottom: 30px;
   left: 30px;
 }
 
+.AudioBackGround:hover {
+  /* background-color: #ccc; */
+  border: 3px solid #00acee;
+  opacity: 1;
+}
+
 .AudioBackGround button {
   background: transparent;
-  border: 1px solid #fff;
+  /* border: 2px solid #fff; */
   width: 40px;
   height: 40px;
   border-radius: 20px;
   color: #fff;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.AudioBackGround button > img {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+}
+.AudioBackGround button:hover {
+  transform: translateY(-3px);
 }
 
 .AudioBackGround span {
   color: #fff;
+  font-size: 1.1rem;
+  width: 120px;
+  height: 25px;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: center;
 }
-
+/* .AudioBackGround span:hover {
+  font-weight: 700;
+} */
 /* 로딩페이지 창  */
 
 .LoadingPage {
@@ -1279,4 +1315,68 @@ h4 {
 .ModalArrow {
   left: 50%;
   transform: translateX(-50%);
+}
+
+/* playEffect */
+
+.PlayEffect {
+  width: 100px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.Stroke {
+  display: block;
+  position: relative;
+  background: #fff;
+  height: 100%;
+  width: 10px;
+  border-radius: 50px;
+  margin: 0 5px;
+  animation: playeffect 1.2s linear infinite;
+}
+
+.Stroke2 {
+  display: block;
+  position: relative;
+  background: #fff;
+  height: 100%;
+  width: 10px;
+  border-radius: 50px;
+  margin: 0 5px;
+}
+
+@keyframes playeffect {
+  50% {
+    height: 20%;
+  }
+  100% {
+    height: 100%;
+  }
+}
+.Stroke:nth-child(1) {
+  animation-delay: 0s;
+}
+.Stroke:nth-child(2) {
+  animation-delay: 0.3s;
+}
+
+.Stroke:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+.Stroke:nth-child(4) {
+  animation-delay: 0.9s;
+}
+
+.Stroke:nth-child(5) {
+  animation-delay: 0.6s;
+}
+
+.Stroke:nth-child(6) {
+  animation-delay: 0.3s;
+}
+.Stroke:nth-child(1) {
+  animation-delay: 0s;
 }
