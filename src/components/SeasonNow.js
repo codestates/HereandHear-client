@@ -29,7 +29,7 @@ function SeasonNow({ handlePlay, seasonScroll }) {
       <Recommends
         key={monthNow.id}
         id={monthNow.id}
-        introTitle={monthNow.seasonTitle}
+        introTitle={monthNow.subtitle}
         recImg={monthNow.imgPath}
         title={monthNow.title}
         place={monthNow.place}

@@ -42,7 +42,7 @@ function WeatherNow({ handlePlay, weatherScroll }) {
       <Recommends
         key={weatherNow.id}
         id={weatherNow.id}
-        introTitle={weatherNow.weatherTitle}
+        introTitle={weatherNow.subtitle}
         recImg={weatherNow.imgPath}
         title={weatherNow.title}
         place={weatherNow.place}

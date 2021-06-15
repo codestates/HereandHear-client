@@ -45,8 +45,7 @@ function Recommends(props) {
 
   return (
     <div className="recommends">
-      {locationScroll ? (
-        // {seasonScroll ? (
+      {seasonScroll ? (
         <div className="recBtns" onClick={handleScrollTop}>
           Top
         </div>
