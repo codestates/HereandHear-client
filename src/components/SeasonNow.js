@@ -18,7 +18,6 @@ function SeasonNow({handlePlay, seasonScroll}){
         if(monthNow === DummyData.month) {
           return(
           <Recommends 
-            className={seasonScroll}
             key={DummyData.id}
             introTitle={DummyData.seasonTitle}
             recImg={DummyData.recImg}
@@ -27,7 +26,7 @@ function SeasonNow({handlePlay, seasonScroll}){
             text={DummyData.text}
             handlePlay={handlePlay}
             weathers={weathers}
-            // seasonScroll={seasonScroll}
+            seasonScroll={seasonScroll}
           />)
         } else {
           return '';
