@@ -1,18 +1,55 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import {withRouter} from'react-router-dom';
+import axios from 'axios';
 
 function Mypage(props) {
+  console.log(props);
   const [nickName, setNickName] = useState('');
   const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('');
   const [errMessage, SetErrMessage] = useState('');
+
+  // console.log(sessionStorage.getItem('id'));
+  useEffect(() => {
+    axios
+      .get(
+        'https://ec2-18-117-241-8.us-east-2.compute.amazonaws.com:443/user/' +
+          sessionStorage.getItem('id'),
+      )
+      .then((res) => {
+        setEmail(res.data.data.email);
+        console.log(email);
+        // console.log(res.data);
+      });
+  }, []);
 
   const handelMypage = () => {
     if (nickName === '') {
       SetErrMessage('변경하실 닉네임을 입력하세요');
     } else if (password === '') {
-      SetErrMessage('비밀번호를 입력흐세요');
+      SetErrMessage('비밀번호를 입력하세요');
     } else {
-      SetErrMessage('');
-      props.history.push('/');
+      axios
+        .post(
+          'https://ec2-18-117-241-8.us-east-2.compute.amazonaws.com:443/user/update',
+          {
+            nickname: nickName,
+            email: email,
+            userId: sessionStorage.getItem('id'),
+            password: password,
+          },
+        )
+        .then((res) => {
+          console.log(res);
+          SetErrMessage('');
+          props.history.push('/');
+        })
+        .catch((err) => {
+          console.log(err);
+          if (err) {
+            SetErrMessage('비밀번호를 확인해주세요');
+          }
+        });
     }
   };
 
@@ -27,8 +64,7 @@ function Mypage(props) {
     <div className="MyPage">
       <form onSubmit={(e) => e.preventDefault()}>
         <ul className="SignUpUl">
-        
-        {errMessage === '' ? (
+          {errMessage === '' ? (
             <li>MY PAGE</li>
           ) : (
             <li
@@ -48,7 +84,13 @@ function Mypage(props) {
 
           <li>
             <div className="UserNameIcon"></div>
-            <input value={'ID : smart555'} readOnly></input>
+            <input
+              readOnly
+              value={email || ''}
+              style={{
+                color: '#fff',
+              }}
+            ></input>
           </li>
           <li>
             <div className="NickNameIcon"></div>
@@ -79,4 +121,4 @@ function Mypage(props) {
   );
 }
 
-export default Mypage;
+export default withRouter(Mypage);

@@ -1,5 +1,6 @@
-import React from 'react';
+import React,{useEffect,useState} from 'react';
 import styled ,{keyframes}from 'styled-components';
+import axios from 'axios';
 // import UnderArrow from './UnderArrow';
 // import CategoryListContents from './CategoryListContents';
 
@@ -129,11 +130,24 @@ const Context = styled.div`
   /* border: 1px solid yellow; */
 `;
 
-function PlayModalPage({ handleView, isView }) {
+function PlayModalPage({ handleView, isView,data }) {
   console.log(handleView);
+  const [renderData ,setRenderData]=useState('')
+
+
   const ModalPage = () => {
     handleView(isView);
   };
+
+ 
+  useEffect(()=>{
+    axios.get('https://ec2-18-117-241-8.us-east-2.compute.amazonaws.com:443/contents/'+data.state)
+    .then((res)=>{
+    console.log(res);
+     setRenderData(res.data)
+   })
+   },[])
+
 
   if (isView) {
     return (
@@ -144,13 +158,10 @@ function PlayModalPage({ handleView, isView }) {
             <Fillter></Fillter>
             {/* <img src="img/seoul.jpg" alt="이미지"></img> */}
           </TopImg>
-          <Title>서울 광화문</Title>
-          <Place>Seoul, Korea</Place>
+          <Title>{renderData.title}</Title>
+          <Place>{renderData.location}</Place>
           <Context>
-            비에이초(美栄町)의 인기 관광지인 ‘시로가네 청의 호수 (白金 青い池,
-            일본어 그대로 아오이 이케라고도 함)’는 홋카이도를 대표하는 “절경
-            장소”로 지금은 일본 전국 및 세계에도 그 이름을 알릴 정도로
-            아름답다고 합니다.
+            {renderData.text}
           </Context>
         </PlayModalInside>
       </PlayModal>

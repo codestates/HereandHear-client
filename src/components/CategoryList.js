@@ -1,12 +1,15 @@
 import React from 'react';
 
-function CategoryList({ handleCategoty }) {
+function CategoryList({handleCategory,category }) {
   const handleRadio = (e) => {
     console.log(e.target.value, '-----radioValue');
     //라디오 버튼 클릭시 서버에 get 요청해서 해당 자료 받아서
     //슬라이드 컴포넌트로 데이터를 프롭스로 전달 !
-    handleCategoty(e.target);
+    handleCategory(e.target.value)
+    // handleCategoty(e.target);
   };
+
+
 
   return (
     <div className="CategoryListSlide">

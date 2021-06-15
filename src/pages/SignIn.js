@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 // import { useEffect } from 'react';
 import { withRouter, Link } from 'react-router-dom';
-// import axios from 'axios';
+import axios from 'axios';
 import BackGroundVideo2 from '../video/background2.mp4';
 // import GoogleLogo from '../icon/google.png';
 // import Google from '../components/Google';
@@ -12,42 +12,60 @@ function SignIn(props) {
   const [password, setPassword] = useState('');
   const [errMessage, setErrMessage] = useState('');
 
-
   const login = (event) => {
     event.preventDefault();
-    if (id === '' ) {
+    if (id === '') {
       // console.log('아이디를 입력해주세요');
       setErrMessage('아이디를 입력해주세요');
-      setTimeout(()=>{
+      setTimeout(() => {
         setErrMessage('');
-      },2000)
-    } else if(password ===''){
+      }, 2000);
+    } else if (password === '') {
       // console.log('패스워드를 입력해주세요');
       setErrMessage('패스워드를 입력해주세요');
-      setTimeout(()=>{
+      setTimeout(() => {
         setErrMessage('');
-      },2000)
-    }
-    else {
-      sessionStorage.setItem('id', id);
-      props.handleResponseSuccess();
-      props.history.push('/');
+      }, 2000);
+    } else {
+      axios
+        .post(
+          'https://ec2-18-117-241-8.us-east-2.compute.amazonaws.com:443/user/signin',
+          {
+            email: id,
+            password: password,
+          },
+          {
+            'Content-Type': 'application/json',
+            withCredentials: true,
+          },
+        )
+        .then((res) => {
+          sessionStorage.setItem('id', res.data.id);
+          props.handleResponseSuccess();
+          props.history.push('/');
+        })
+        .catch(() => {
+          setErrMessage('아이디와 패스워드를 확인해주세요');
+        });
     }
   };
 
-  const Kakaologin=()=>{
-      const REST_API_KEY = '486e2bb9e00eb478cc738f9c518eb926'
-      const REDIRECT_URI = 'http://localhost:3000'
-      // window.location.assign(`https://accounts.google.com/o/oauth2/v2/auth?scope=https%3A//www.googleapis.com/auth/drive.metadata.readonly&access_type=offline&include_granted_scopes=true&response_type=code&redirect_uri=http://localhost:3000&client_id=363735681458-sh03c6tq4t78465q3906gor08cfcrari.apps.googleusercontent.com`)
-      window.location.assign(`https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`)
+  const Kakaologin = () => {
+    const REST_API_KEY = '486e2bb9e00eb478cc738f9c518eb926';
+    const REDIRECT_URI = 'http://localhost:3000';
+    // window.location.assign(`https://accounts.google.com/o/oauth2/v2/auth?scope=https%3A//www.googleapis.com/auth/drive.metadata.readonly&access_type=offline&include_granted_scopes=true&response_type=code&redirect_uri=http://localhost:3000&client_id=363735681458-sh03c6tq4t78465q3906gor08cfcrari.apps.googleusercontent.com`)
+    window.location
+      .assign(
+        `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`,
+      )
       .then((res) => {
-        console.log(res)
+        console.log(res);
       })
       .catch((err) => {
-        console.error(err)
-      })
-  }
-  
+        console.error(err);
+      });
+  };
+
   const handleId = (e) => {
     setId(e.target.value);
   };
@@ -59,21 +77,23 @@ function SignIn(props) {
     <div className="SignIn">
       <form onSubmit={(e) => e.preventDefault()}>
         <ul className="SignInUl">
-          {errMessage==="" ?  
-          <li>
-            MEMBER LOGIN
+          {errMessage === '' ? (
+            <li>MEMBER LOGIN</li>
+          ) : (
+            <li
+              style={{
+                display: 'flex',
+                justifyContent: 'center',
+                backgroundColor: 'transparent',
+                zIndex: '15',
+                alignItems: 'center',
+                borderBottom: '4px solid #d21c38',
+                fontSize: '1.2rem',
+              }}
+            >
+              {errMessage}
             </li>
-          :
-          <li  style={{
-            display: 'flex',
-            justifyContent: 'center',
-            backgroundColor: 'transparent',
-            zIndex: '15',
-            alignItems: 'center',
-            borderBottom: '4px solid #d21c38',
-            fontSize: '1.2rem',
-          }}>{errMessage}</li>  
-          }
+          )}
           <li>
             <div className="UserNameIcon"></div>
             <input
@@ -105,8 +125,12 @@ function SignIn(props) {
             <div className="SocialLogin">
               <img src={GoogleLogo} alt="google" />
             </div> */}
-             <button type="submit" className="SignInBtnKaKao" onClick={Kakaologin}>
-             Login with Kakao
+            <button
+              type="submit"
+              className="SignInBtnKaKao"
+              onClick={Kakaologin}
+            >
+              Login with Kakao
             </button>
           </li>
           <li>

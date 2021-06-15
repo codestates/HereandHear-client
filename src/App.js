@@ -24,39 +24,43 @@ function App() {
   //   id:'',
   //   nickname:''
   // })
-  
-  useEffect(()=>{
-    if(sessionStorage.getItem('id')!==null ){
+  console.log(isPlay);
+
+  useEffect(() => {
+    if (sessionStorage.getItem('id') !== null) {
+      setLogin(true);
+    } else if (sessionStorage.getItem('accesstoken') !== null) {
       setLogin(true);
     }
-    else if(sessionStorage.getItem('accesstoken')!==null){
-      setLogin(true);
-    }
-  },[])
+  }, []);
 
   useEffect(() => {
     return setIsPlaying(false);
   }, []);
 
-  
-//카카오 로그인
-useEffect(() => {
-  const url = new URL(window.location.href)
-  const authorizationCode = url.searchParams.get('code')
-  if (authorizationCode) {
-    // authorization server로부터 클라이언트로 리디렉션된 경우, authorization code가 함께 전달됩니다.
-    // ex) http://localhost:3000/?code=5e52fb85d6a1ed46a51f
-    console.log(authorizationCode);
-    localStorage.setItem('accesstoken', authorizationCode);
-    handleResponseSuccess();
-    axios.post('https://localhost:80/kakao/accessToken',{
-      authorizationCode: authorizationCode
-    })
-    .then((res) => {
-      console.log(res.data)
-    })
-}})
+  //카카오 로그인
+  useEffect(() => {
+    const url = new URL(window.location.href);
+    const authorizationCode = url.searchParams.get('code');
+    if (authorizationCode) {
+      // authorization server로부터 클라이언트로 리디렉션된 경우, authorization code가 함께 전달됩니다.
+      // ex) http://localhost:3000/?code=5e52fb85d6a1ed46a51f
+      console.log(authorizationCode);
 
+      axios
+        .post(
+          'https://ec2-18-117-241-8.us-east-2.compute.amazonaws.com:443/kakao/accessToken',
+          {
+            authorizationCode: authorizationCode,
+          },
+        )
+        .then((res) => {
+          console.log(res.data);
+          sessionStorage.setItem('accesstoken', res.data.access_token);
+          handleResponseSuccess();
+        });
+    }
+  }, []);
 
   const handleResponseSuccess = function () {
     setLogin(!isLogin);
@@ -67,19 +71,28 @@ useEffect(() => {
   };
   const handleLogout = function () {
     // console.log('로그앗버튼')
-    setLogin(!isLogin);
+    setLogin(false);
     sessionStorage.clear();
   };
 
-  const handlePlay = function () {
-    setPlay(!isPlay);
+  const handlePlay = function (result) {
+    setPlay(result);
   };
 
   return (
     <BrowserRouter>
       <Nav isLogin={isLogin} handleLogout={handleLogout}></Nav>
       <Switch>
-        <Route path="/category" render={() => <Category />} />
+        <Route
+          path="/category"
+          render={() => (
+            <Category
+              isPlay={isPlay}
+              handlePlay={handlePlay}
+              isLogin={isLogin}
+            />
+          )}
+        />
         <Route
           path="/mypage"
           render={() => {
@@ -119,11 +132,19 @@ useEffect(() => {
         />
         <Route
           path="/favorite"
-          handlePlay={handlePlay}
-          isLogin={isLogin}
-          render={() => <Favorite />}
+          render={() => <Favorite handlePlay={handlePlay} isLogin={isLogin} />}
         />
-        <Route exact path="/" render={() => <Home isLogin={isLogin} handleResponseSuccess={handleResponseSuccess} />} />
+        <Route
+          exact
+          path="/"
+          render={() => (
+            <Home
+              isLogin={isLogin}
+              handleResponseSuccess={handleResponseSuccess}
+              handlePlay={handlePlay}
+            />
+          )}
+        />
         <Route component={NotFound} />
       </Switch>
       <AudioBackGround

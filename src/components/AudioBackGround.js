@@ -1,12 +1,30 @@
-import React, { useRef } from 'react';
+import React, { useRef,useEffect,useState } from 'react';
 import Draggable from 'react-draggable';
 import { withRouter } from 'react-router-dom';
+import axios from 'axios';
 
-function AudioBackGround({ isLogin, isPlaying, handleResponsePlay,history}) {
+function AudioBackGround(props) {
   // const [isPlaying, setIsPlaying] = useState(false);
-  // console.log(history, '----audio');
+  console.log(props.history.location.state);
+  const { isLogin, isPlaying, handleResponsePlay,history} =props
+
+  const [renderData ,setRenderData]=useState('');
+
+  // console.log(history.location.state, '----audio');
   // console.log(document.getElementsByClassName('AudioBackGround')[0].style);
  
+  useEffect(()=>{
+    if(history.location.state ===undefined){
+        return false
+    }else{
+      axios.get('https://ec2-18-117-241-8.us-east-2.compute.amazonaws.com:443/contents/'+ history.location.state)
+      .then((res)=>{
+      console.log(res,'---------------------audio');
+       setRenderData(res.data)
+     })
+    }
+   },[history.location.state])
+
 
   const audioRef = useRef();
   const play = () => {
@@ -27,7 +45,7 @@ function AudioBackGround({ isLogin, isPlaying, handleResponsePlay,history}) {
     return (
       <Draggable>
         <div className="AudioBackGround" style={{display:'none'}}>
-          <span>도쿄 지하철</span>
+          {/* <span>{renderData.title}</span> */}
           {isPlaying ? (
             <>
           <div className='PlayEffect'>
@@ -62,7 +80,7 @@ function AudioBackGround({ isLogin, isPlaying, handleResponsePlay,history}) {
 
           <audio
             ref={audioRef}
-            src="/sound/japan.mp3"
+            src={renderData.audioPath}
             controlsList="nodownload"
             className="audio_origin"
           ></audio>
