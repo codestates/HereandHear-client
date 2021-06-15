@@ -3,6 +3,8 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import styled, { keyframes } from 'styled-components';
+import {withRouter} from 'react-router-dom';
+import Play from '../pages/Play';
 
 const SlideLoad = keyframes`
 0%{
@@ -55,26 +57,15 @@ const Image = styled.img`
 
 `;
 
-const items = [
-  { id: '도쿄 지하철',url:'/img/tokyo_subway.jpg' },
-  { id: '도쿄 지하철',url:'/img/seoul.jpg' },
-  { id: '도쿄 지하철',url:'/img/sapporo.jpg' },
-  { id: '도쿄 지하철' ,url:'/img/tokyo_subway.jpg'},
-  { id: '도쿄 지하철',url:'/img/sapporo.jpg' },
-  { id: '도쿄 지하철',url:'/img/seoul.jpg'  },
-  { id: '도쿄 지하철',url:'/img/sapporo.jpg' },
-  { id: '도쿄 지하철' ,url:'/img/tokyo_subway.jpg'},
-  { id: '도쿄 지하철',url:'/img/seoul.jpg'  },
-  { id: '도쿄 지하철',url:'/img/sapporo.jpg' },
 
- 
-];
+function CategoryListContents({data,isPlay,handlePlay,history,isLogin}) {
+  // console.log(history, "----list");
 
-function CategoryListContents(props) {
-  console.log(props , "----list");
-
-  const MovePlay = (e) =>{
-    console.log(e.target);
+  const MovePlay = (item) =>{
+    history.push({pathname:'/play',
+      state:item});
+    handlePlay(true);
+    
   }
 
 
@@ -92,11 +83,11 @@ function CategoryListContents(props) {
     <div className="CategoryListContents">
       <Container>
         <StyledSlider {...settings}>
-          {items.map((item) => {
+          {data.map((item) => {
             return (
-              <div key={item.id} onClick={MovePlay}>
-                <ImageContainer>
-                  <Image src={item.url} />
+              <div key={item.id} onClick={()=>MovePlay(item.id)}>
+                <ImageContainer >
+                  <Image src={item.imgPath} />
                   <div
                     style={{
                       color: '#fff',
@@ -106,7 +97,7 @@ function CategoryListContents(props) {
                       left: '20px',
                     }}
                   >
-                    {item.id}
+                    {item.title}
                   </div>
                   <div
                    style={{
@@ -116,7 +107,7 @@ function CategoryListContents(props) {
                     bottom: '40px',
                     left: '20px',
                   }}>
-                  Tokyo, Japan
+                  {item.location}
                   </div>
                 </ImageContainer>
               </div>
@@ -128,4 +119,4 @@ function CategoryListContents(props) {
   );
 }
 
-export default CategoryListContents;
+export default withRouter(CategoryListContents);

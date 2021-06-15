@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import styled, { keyframes } from 'styled-components';
 import DummyDatas from '../documents/DummyDatas';
 import LoadingPage from '../components/LoadingPage';
+import {withRouter} from 'react-router-dom';
+import axios from 'axios';
 
 const BackAni = keyframes`
 0%{
@@ -205,15 +207,31 @@ const FavoriteBtn = styled.div`
 `;
 
 function PlayContents(props) {
-  const { title, place, recImg } = DummyDatas[0];
+  // const { title, place, recImg } = DummyDatas[0];
   // 현재는 일시적인 더미데이터. 추후 Recommneds에서 버튼을 누르면, 해당 데이터를 서버 통신 => db 경로 획득 => 서버 데이터 획득 => 클라이언트 렌더링을 해야 한다.
-  const { isPlaying, handleResponsePlay, handleView, isView } = props;
+  
+  const [renderData ,setRenderData]=useState('')
+
+  const { isPlaying, handleResponsePlay, handleView, isView ,data,history} = props;
+
+    console.log(data.state);
+
+    useEffect(()=>{
+     axios.get('https://ec2-18-117-241-8.us-east-2.compute.amazonaws.com:443/contents/'+ data.state)
+     .then((res)=>{
+     console.log(res)
+      setRenderData(res.data)
+    })
+    },[])
+
+
+
   // console.log(props); 
   // console.log(isPlaying, '---sdsd');
   const [loading, setLoading] = useState(false); // 로딩창
 
   // 즐겨찾기 임시 스테이트
-  const [isFavorite, setFavorite] = useState(false);
+  // const [isFavorite, setFavorite] = useState(false);
 
   setTimeout(() => {
     setLoading(true);
@@ -224,8 +242,11 @@ function PlayContents(props) {
     handleView(isView);
   };
 
-  const handleFavorite = () => {
-    console.log('즐겨찾기');
+  const handleFavorite = (item) => {
+    axios.post('https://ec2-18-117-241-8.us-east-2.compute.amazonaws.com:443/favorite/addOrDelete',{
+      "userId":  sessionStorage.getItem('id'),
+    "contentId": item,
+    })
   };
 
   const AudioPlay = () => {
@@ -247,22 +268,19 @@ function PlayContents(props) {
       <>
         <PlayView>
           <Fillter></Fillter>
-          <img src="/img/seoul.jpg" alt="이미지" />
+          <img src={renderData.imgPath} alt="이미지" />
           <PlayerContainer>
             <PlayUl>
               <li>
-                <PlayTitle>{title}</PlayTitle>
-                <PlayPlace>{place}</PlayPlace>
+                <PlayTitle>{renderData.title}</PlayTitle>
+                <PlayPlace>{renderData.location}</PlayPlace>
               </li>
               <li>
                 <PlayBtnsContainer>
                   <InfoFavoriteOut>
                     <InfoBtn onClick={ModalPage}></InfoBtn>
-                    {isFavorite ? (
-                      <></>
-                    ) : (
-                      <FavoriteBtn onClick={handleFavorite}></FavoriteBtn>
-                    )}
+                  
+                      <FavoriteBtn onClick={()=>handleFavorite(renderData.id)}></FavoriteBtn>
                   </InfoFavoriteOut>
                   <PlayBtneOut>
                     {isPlaying ? (
@@ -283,4 +301,4 @@ function PlayContents(props) {
   }
 }
 
-export default PlayContents;
+export default withRouter(PlayContents);

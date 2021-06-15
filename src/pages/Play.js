@@ -6,9 +6,11 @@ import SeasonNow from '../components/SeasonNow';
 import WeatherNow from '../components/WeatherNow';
 
 function Play(props) {
-  // console.log(props.history.location.pathname);
-  const { handlePlay, isPlay, handleResponsePlay, isPlaying } = props;
+  console.log(props);
 
+  const { handlePlay, isPlay, handleResponsePlay, isPlaying, location } = props;
+
+  console.log(props.location);
   const [isView, setView] = useState(false); //모달창 스테이트 관리
 
   const handleView = (result) => { // 모달창 관리
@@ -20,6 +22,7 @@ function Play(props) {
     <>
       {isPlay ? (
         <PlayContents
+          data={location}
           isView={isView}
           handleView={handleView}
           handlePlay={handlePlay}
@@ -34,7 +37,7 @@ function Play(props) {
         </>
       )}
       {isView ? (
-        <PlayModalPage isView={isView} handleView={handleView}></PlayModalPage>
+        <PlayModalPage isView={isView} data={location} handleView={handleView}></PlayModalPage>
       ) : (
         <></>
       )}

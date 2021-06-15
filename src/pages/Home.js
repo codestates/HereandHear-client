@@ -6,7 +6,7 @@ import UnderArrow from '../components/UnderArrow';
 import LocationNow from '../components/LocationNow';
 // import axios from 'axios';
 
-function Home({ isLogin ,handleResponseSuccess}) {
+function Home({ isLogin ,handleResponseSuccess,handlePlay}) {
   // 스크롤 때문에 프롭스 내려주려 함.
   const weatherScroll = 'rec1'
   const seasonScroll = 'rec2'
@@ -42,6 +42,7 @@ function Home({ isLogin ,handleResponseSuccess}) {
   //   // console.log("ScrollY is ", ScrollY);
   // }, [ScrollY])
 
+  
 
   useEffect(() => {
     const watch = () => {
@@ -71,9 +72,9 @@ function Home({ isLogin ,handleResponseSuccess}) {
       {
         isLogin
         ? <>
-            <WeatherNow weatherScroll={weatherScroll}/>
-            <SeasonNow seasonScroll={seasonScroll} className='SeasonNow'/>
-            <LocationNow locationScroll={locationScroll} />
+            <WeatherNow weatherScroll={weatherScroll} handlePlay={handlePlay}/>
+            <SeasonNow seasonScroll={seasonScroll} className='SeasonNow' handlePlay={handlePlay}/>
+            {/* <LocationNow locationScroll={locationScroll} /> */}
           </> 
         : <></>
       }
