@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
 
 function Recommends({
@@ -9,17 +9,42 @@ function Recommends({
   text,
   handlePlay,
   weathers,
+  weatherScroll,
+  seasonScroll,
+  locationScroll
 }) {
   const pathname = window.location.pathname;
   // 현재 페이지 pathname을 알 수 있음 ex) /play
 
+
+
+
+  const handleScrollNext = () => {
+    window.scrollBy({
+      top: 800,
+      behavior: 'smooth'
+    })
+  }
+
+
+  const handleScrollTop = () => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    })
+  }
+
+
   return (
     <div className="recommends">
-      {weathers ? (
-        <div className="recBtns">Next</div>
-      ) : (
-        <div className="recBtns">Top</div>
-      )}
+      {locationScroll ? (
+        <div className="recBtns" onClick={handleScrollTop}>Top</div>
+        ) : (
+          <div className="recBtns" onClick={handleScrollNext}>Next</div>
+        )
+      }
+      
 
       <ul className="recUl">
         <li>{introTitle}</li>
@@ -37,12 +62,7 @@ function Recommends({
         </li>
         <li>
           {pathname === '/' ? (
-            <div
-              className="recGoPlayBtn"
-              // onClick={() => {
-              //   window.location.pathname = '/play';
-              // }}
-            >
+            <div className="recGoPlayBtn" >
               <Link to="/play" className="textLink">
                 Play
               </Link>
@@ -57,33 +77,9 @@ function Recommends({
               바로 떠나기
             </div>
           )}
-          <div className="recGoSkipBtn">Skip</div>
         </li>
       </ul>
     </div>
-    // <div className="recButtons">
-    //   {/* 현재 홈 페이지 추천창에서 플레이 페이지 가기 누르면 튕기는 현상 = 세선 쿠키가 없어서 그렇다 */}
-    //   {pathname === '/' ? (
-    //     <div
-    //       className="goPlayPage"
-    //       onClick={() => {
-    //         window.location.pathname = '/play';
-    //       }}
-    //     >
-    //       Play로 이동!
-    //     </div>
-    //   ) : (
-    //     <div
-    //       className="getPlay"
-    //       onClick={() => {
-    //         handlePlay();
-    //       }}
-    //     >
-    //       바로떠나기
-    //     </div>
-    //   )}
-    //   <button className="skip">Skip</button>
-    // </div>
   );
 }
 
