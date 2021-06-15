@@ -29,7 +29,6 @@ function WeatherNow({handlePlay, weatherScroll}){
         if(weatherNow.weatherNow === DummyData.weather ) { // 더미데이터
         return (
           <Recommends 
-            className={weatherScroll}
             key={DummyData.id}
             introTitle={DummyData.weatherTitle}
             recImg={DummyData.recImg}
@@ -37,7 +36,7 @@ function WeatherNow({handlePlay, weatherScroll}){
             place={DummyData.place}
             text={DummyData.text}
             handlePlay={handlePlay}
-            // weatherScroll={weatherScroll}
+            weatherScroll={weatherScroll}
           />)
         } else {
           return '';

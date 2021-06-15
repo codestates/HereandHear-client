@@ -39,6 +39,7 @@ function Recommends({
   return (
     <div className="recommends">
       {locationScroll ? (
+        // {seasonScroll ? (
         <div className="recBtns" onClick={handleScrollTop}>Top</div>
         ) : (
           <div className="recBtns" onClick={handleScrollNext}>Next</div>
