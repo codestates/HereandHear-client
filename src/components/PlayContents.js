@@ -21,7 +21,7 @@ const BackAniOp = keyframes`
   opacity: 0.7;
 }
 50%{
-  opacity: 0.3;
+  opacity: 0.5;
 
 }
 100%{
@@ -129,25 +129,39 @@ const PlayBtneOut = styled.div`
 `;
 
 const PlayBtn = styled.div`
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
-  border: 1px solid #fff;
-
+  /* border: 1px solid #fff; */
   text-align: center;
-  line-height: 80px;
-  margin-right: 30px;
+  line-height: 100px;
   cursor: pointer;
+  background-image: url('/icon/playBtn.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  transition: all 0.4s;
+  &:hover {
+    transform: scale(1.3);
+  }
 `;
 
 const PauseBtn = styled.div`
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
   border-radius: 50%;
-  border: 1px solid #fff;
+  /* border: 1px solid #fff; */
   text-align: center;
-  line-height: 80px;
+  line-height: 100px;
   cursor: pointer;
+  background-image: url('/icon/pauseBtn.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  transition: all 0.4s;
+  &:hover {
+    transform: scale(1.3);
+  }
 `;
 
 const InfoFavoriteOut = styled.div`
@@ -163,12 +177,15 @@ const InfoBtn = styled.div`
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  margin-right: 30px;
   cursor: pointer;
   background-image: url('/icon/info.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  transition: all 0.4s;
+  &:hover {
+    transform: scale(1.05);
+  }
 `;
 
 const FavoriteBtn = styled.div`
@@ -176,20 +193,28 @@ const FavoriteBtn = styled.div`
   height: 60px;
   border-radius: 50%;
   cursor: pointer;
+  margin-left: 20px;
   background-image: url('/icon/bookmark1.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  transition: all 0.4s;
+  &:hover {
+    transform: scale(1.05);
+  }
 `;
 
 function PlayContents(props) {
   const { title, place, recImg } = DummyDatas[0];
   // 현재는 일시적인 더미데이터. 추후 Recommneds에서 버튼을 누르면, 해당 데이터를 서버 통신 => db 경로 획득 => 서버 데이터 획득 => 클라이언트 렌더링을 해야 한다.
   const { isPlaying, handleResponsePlay, handleView, isView } = props;
-  console.log(props);
+  // console.log(props); 
+  // console.log(isPlaying, '---sdsd');
+  const [loading, setLoading] = useState(false); // 로딩창
 
-  console.log(isPlaying, '---sdsd');
-  const [loading, setLoading] = useState(false);
+  // 즐겨찾기 임시 스테이트
+  const [isFavorite, setFavorite] = useState(true);
+
   setTimeout(() => {
     setLoading(true);
   }, 2000);
@@ -199,10 +224,16 @@ function PlayContents(props) {
     handleView(isView);
   };
 
+  const handleFavorite = () => {
+    console.log('즐겨찾기');
+  };
+
   const AudioPlay = () => {
     console.log('재생버튼');
     document.getElementsByClassName('audio_origin')[0].play();
-    handleResponsePlay(true);
+    document.getElementsByClassName('AudioBackGround')[0].style.display='flex'
+;    handleResponsePlay(true);
+    
   };
 
   const AudioPause = () => {
@@ -216,7 +247,7 @@ function PlayContents(props) {
       <>
         <PlayView>
           <Fillter></Fillter>
-          <img src={recImg} alt="이미지" />
+          <img src="/img/seoul.jpg" alt="이미지" />
           <PlayerContainer>
             <PlayUl>
               <li>
@@ -227,11 +258,18 @@ function PlayContents(props) {
                 <PlayBtnsContainer>
                   <InfoFavoriteOut>
                     <InfoBtn onClick={ModalPage}></InfoBtn>
-                    <FavoriteBtn></FavoriteBtn>
+                    {isFavorite ? (
+                      <></>
+                    ) : (
+                      <FavoriteBtn onClick={handleFavorite}></FavoriteBtn>
+                    )}
                   </InfoFavoriteOut>
                   <PlayBtneOut>
-                    <PlayBtn onClick={AudioPlay}>play</PlayBtn>
-                    <PauseBtn onClick={AudioPause}>Pause</PauseBtn>
+                    {isPlaying ? (
+                      <PauseBtn onClick={AudioPause}></PauseBtn>
+                    ) : (
+                      <PlayBtn onClick={AudioPlay}></PlayBtn>
+                    )}
                   </PlayBtneOut>
                 </PlayBtnsContainer>
               </li>

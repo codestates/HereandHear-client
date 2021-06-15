@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled ,{keyframes}from 'styled-components';
 // import UnderArrow from './UnderArrow';
 // import CategoryListContents from './CategoryListContents';
 
@@ -51,17 +51,37 @@ const ModalCloseBtn = styled.div`
   }
 `;
 
+const ModalSlide = keyframes`
+
+0%{
+  background-image: url('img/seoul.jpg');
+
+}33%{
+  background-image: url('img/seoul2.jpg');
+
+}67%{
+  background-image: url('img/seoul3.jpg');
+}
+`
+
 const TopImg = styled.div`
   width: 100%;
   height: 100%;
   /* border: 4px solid pink; */
   margin-bottom: 100px;
-  & img {
+  background-image: url('img/seoul.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  animation: 15s infinite ${ModalSlide};
+  &:hover{
+    animation-play-state: paused;
+  }
+  /* & img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     /* opacity: 0.4; */
-  }
+  //} */
 `;
 
 const Fillter = styled.div`
@@ -122,7 +142,7 @@ function PlayModalPage({ handleView, isView }) {
           <ModalCloseBtn onClick={ModalPage}>X</ModalCloseBtn>
           <TopImg>
             <Fillter></Fillter>
-            <img src="img/seoul.jpg"></img>
+            {/* <img src="img/seoul.jpg" alt="이미지"></img> */}
           </TopImg>
           <Title>서울 광화문</Title>
           <Place>Seoul, Korea</Place>

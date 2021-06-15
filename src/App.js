@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import Favorite from './pages/Favorite';
 import Home from './pages/Home';
@@ -12,11 +12,51 @@ import Nav from './components/Nav';
 import Footer from './components/Footer';
 import './App.css';
 import AudioBackGround from './components/AudioBackGround';
+import axios from 'axios';
 
 function App() {
-  const [isLogin, setLogin] = useState(false);
-  const [isPlay, setPlay] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isLogin, setLogin] = useState(false); // 로그인관리
+  const [isPlay, setPlay] = useState(false); // 플레이버튼
+  const [isPlaying, setIsPlaying] = useState(false); // 재생관리
+  // const [isAudioView, setAudioView] = useState(true); // 오디오 창 보이는 여부
+  // 위 스테이트를 넣고 플레이 페이지가서 재싱시 오류 발생 이유를 모르겠음.
+  // const [isUserInfo ,setUserInfo] =useState({
+  //   id:'',
+  //   nickname:''
+  // })
+  
+  useEffect(()=>{
+    if(sessionStorage.getItem('id')!==null ){
+      setLogin(true);
+    }
+    else if(sessionStorage.getItem('accesstoken')!==null){
+      setLogin(true);
+    }
+  },[])
+
+  useEffect(() => {
+    return setIsPlaying(false);
+  }, []);
+
+  
+//카카오 로그인
+useEffect(() => {
+  const url = new URL(window.location.href)
+  const authorizationCode = url.searchParams.get('code')
+  if (authorizationCode) {
+    // authorization server로부터 클라이언트로 리디렉션된 경우, authorization code가 함께 전달됩니다.
+    // ex) http://localhost:3000/?code=5e52fb85d6a1ed46a51f
+    console.log(authorizationCode);
+    localStorage.setItem('accesstoken', authorizationCode);
+    handleResponseSuccess();
+    axios.post('https://localhost:80/kakao/accessToken',{
+      authorizationCode: authorizationCode
+    })
+    .then((res) => {
+      console.log(res.data)
+    })
+}})
+
 
   const handleResponseSuccess = function () {
     setLogin(!isLogin);
@@ -26,7 +66,9 @@ function App() {
     setIsPlaying(result);
   };
   const handleLogout = function () {
+    // console.log('로그앗버튼')
     setLogin(!isLogin);
+    sessionStorage.clear();
   };
 
   const handlePlay = function () {
@@ -81,7 +123,7 @@ function App() {
           isLogin={isLogin}
           render={() => <Favorite />}
         />
-        <Route exact path="/" render={() => <Home isLogin={isLogin} />} />
+        <Route exact path="/" render={() => <Home isLogin={isLogin} handleResponseSuccess={handleResponseSuccess} />} />
         <Route component={NotFound} />
       </Switch>
       <AudioBackGround

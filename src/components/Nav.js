@@ -2,6 +2,8 @@ import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 
 function Nav({ isLogin, handleLogout }) {
+
+  
   return (
     <div className="NavOut">
       <div className="Nav">
