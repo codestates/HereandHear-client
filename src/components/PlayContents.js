@@ -213,7 +213,7 @@ function PlayContents(props) {
   const [loading, setLoading] = useState(false); // 로딩창
 
   // 즐겨찾기 임시 스테이트
-  const [isFavorite, setFavorite] = useState(true);
+  const [isFavorite, setFavorite] = useState(false);
 
   setTimeout(() => {
     setLoading(true);

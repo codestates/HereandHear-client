@@ -67,7 +67,7 @@ const ModalSlide = keyframes`
 const TopImg = styled.div`
   width: 100%;
   height: 100%;
-  /* border: 4px solid pink; */
+  border-radius: 30px;
   margin-bottom: 100px;
   background-image: url('img/seoul.jpg');
   background-repeat: no-repeat;
