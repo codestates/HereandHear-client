@@ -3,10 +3,30 @@ import BackGroundVideo from '../video/background.mp4';
 import WeatherNow from '../components/WeatherNow';
 import SeasonNow from '../components/SeasonNow';
 import UnderArrow from '../components/UnderArrow';
-// import LocationNow from '../components/LocationNow';
+import LocationNow from '../components/LocationNow';
 // import axios from 'axios';
 
 function Home({ isLogin ,handleResponseSuccess}) {
+  // 스크롤 때문에 프롭스 내려주려 함.
+  const weatherScroll = 'rec1'
+  const seasonScroll = 'rec2'
+  const locationScroll = 'rec3'
+
+  // 홈페이지 창 y축 포지션 확인 스테이트
+  // const [position, setPosition] = useState(0);
+  // const onScroll = () => {
+  //   // console.log(window.scrollY)
+  //   setPosition(window.scrollY);
+  // }
+  // useEffect(() => {
+  //   window.addEventListener("scroll", onScroll);
+  //   return () => {
+  //     window.removeEventListener("scroll", onScroll);
+  //   };
+  // }, []);
+
+
+
   const [ScrollY, setScrollY] = useState(0);
   const [isArrow, setArrow] = useState(true);
   const handleFollow = () => {
@@ -48,15 +68,15 @@ function Home({ isLogin ,handleResponseSuccess}) {
         </video>
         {isLogin && isArrow ? <UnderArrow /> : <></>}
       </div>
-      {isLogin ? (
-        <>
-          <WeatherNow />
-          <SeasonNow className="SeasonNow" />
-          {/* <LocationNow /> */}
-        </>
-      ) : (
-        <></>
-      )}
+      {
+        isLogin
+        ? <>
+            <WeatherNow weatherScroll={weatherScroll}/>
+            <SeasonNow seasonScroll={seasonScroll} className='SeasonNow'/>
+            <LocationNow locationScroll={locationScroll} />
+          </> 
+        : <></>
+      }
     </>
   );
 }

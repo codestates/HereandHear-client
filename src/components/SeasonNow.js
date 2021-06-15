@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import DummyDatas from '../documents/DummyDatas';
 import Recommends from './Recommends';
 
-function SeasonNow({handlePlay}){
+function SeasonNow({handlePlay, seasonScroll}){
   const [ monthNow, setMonthNow ] = useState(0);
   const month = new Date().getMonth() + 1; // 이렇게 하면 현재 달 나옴
   const weathers = false;
@@ -10,12 +10,15 @@ function SeasonNow({handlePlay}){
     setMonthNow(month)
   },[month])
 
+  // console.log(seasonScroll) // rec2
+
   return(
     <>
       {DummyDatas.map((DummyData) => {
         if(monthNow === DummyData.month) {
           return(
           <Recommends 
+            className={seasonScroll}
             key={DummyData.id}
             introTitle={DummyData.seasonTitle}
             recImg={DummyData.recImg}
@@ -24,6 +27,7 @@ function SeasonNow({handlePlay}){
             text={DummyData.text}
             handlePlay={handlePlay}
             weathers={weathers}
+            // seasonScroll={seasonScroll}
           />)
         } else {
           return '';
