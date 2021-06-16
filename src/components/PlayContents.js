@@ -246,6 +246,8 @@ function PlayContents(props) {
     axios.post('https://ec2-18-117-241-8.us-east-2.compute.amazonaws.com:443/favorite/addOrDelete',{
       "userId":  sessionStorage.getItem('id'),
     "contentId": item,
+    }).then((res) => {
+      alert(res.data.message)
     })
   };
 
