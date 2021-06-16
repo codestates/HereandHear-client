@@ -9,7 +9,6 @@ function KakaoMapAPI({ latitude, longitude, handlePlay, locationScroll }){
   useEffect(()=> {
     const geocoder = new kakao.maps.services.Geocoder();
     const coord = new kakao.maps.LatLng(latitude, longitude);
-    // console.log(coord) // 콘솔창에서 위도경도 받는 시간 확인
     const callback = function(result, status) {
         if (status === kakao.maps.services.Status.OK) {
           setAddress(result[0].address.region_1depth_name)

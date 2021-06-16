@@ -24,7 +24,6 @@ function WeatherNow({ handlePlay, weatherScroll }) {
         // setWeatherNow({ weatherNow: res.weather[0].main });
         // res.weather[0].main === 날씨
         // res.weather[0].id === 700번대면~ atmosphere가 문제있는거임
-        console.log(res.weather[0].main)
         return res.weather[0].main;
         
       })
@@ -38,7 +37,6 @@ function WeatherNow({ handlePlay, weatherScroll }) {
         ),
       )
       .then((res) => {
-        console.log(res.data);
         setWeatherNow(res.data);
       });
   }, []);

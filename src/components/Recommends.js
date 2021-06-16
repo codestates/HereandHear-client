@@ -1,31 +1,29 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { withRouter } from 'react-router-dom';
 
 function Recommends(props) {
-  console.log(props)
   const {
     introTitle,
     recImg,
     title,
-    place,
+    // place,
     text,
     handlePlay,
-    weathers,
-    weatherScroll,
+    // weathers,
+    // weatherScroll,
     seasonScroll,
-    locationScroll,
+    // locationScroll,
     history,
     id,
-    location
+    // location
   } = props;
 
   // console.log(props);
 
-  const pathname = window.location.pathname;
+  // const pathname = window.location.pathname;
   // 현재 페이지 pathname을 알 수 있음 ex) /play
 
   const goPlay = (item) => {
-    console.log(item);
     history.push({ pathname: '/play', state: item });
     handlePlay(true);
   };

@@ -133,7 +133,6 @@ const Context = styled.div`
 `;
 
 function PlayModalPage({ handleView, isView,data }) {
-  console.log(handleView);
   const [renderData ,setRenderData]=useState('')
 
 
@@ -145,7 +144,6 @@ function PlayModalPage({ handleView, isView,data }) {
   useEffect(()=>{
     axios.get(process.env.REACT_APP_BASE_URL + '/contents/'+data.state)
     .then((res)=>{
-    console.log(res);
      setRenderData(res.data)
    })
    },[])

@@ -7,21 +7,16 @@ dotenv.config();
 
 function AudioBackGround(props) {
   // const [isPlaying, setIsPlaying] = useState(false);
-  console.log(props.history.location.state);
   const { isLogin, isPlaying, handleResponsePlay,history} =props
 
   const [renderData ,setRenderData]=useState('');
 
-  // console.log(history.location.state, '----audio');
-  // console.log(document.getElementsByClassName('AudioBackGround')[0].style);
- 
   useEffect(()=>{
     if(history.location.state ===undefined){
         return false
     }else{
       axios.get(process.env.REACT_APP_BASE_URL + '/contents/'+ history.location.state)
       .then((res)=>{
-      console.log(res,'---------------------audio');
        setRenderData(res.data)
      })
     }

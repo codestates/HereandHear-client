@@ -1,6 +1,6 @@
 import React, { useState,useEffect } from 'react';
 import styled, { keyframes } from 'styled-components';
-import DummyDatas from '../documents/DummyDatas';
+// import DummyDatas from '../documents/DummyDatas';
 import LoadingPage from '../components/LoadingPage';
 import {withRouter} from 'react-router-dom';
 import axios from 'axios';
@@ -214,22 +214,17 @@ function PlayContents(props) {
   
   const [renderData ,setRenderData]=useState('')
 
-  const { isPlaying, handleResponsePlay, handleView, isView ,data,history} = props;
+  const { isPlaying, handleResponsePlay, handleView, isView ,data} = props;
 
-    console.log(data.state);
 
     useEffect(()=>{
      axios.get(process.env.REACT_APP_BASE_URL + '/contents/'+ data.state)
      .then((res)=>{
-     console.log(res)
       setRenderData(res.data)
     })
     },[])
 
 
-
-  // console.log(props); 
-  // console.log(isPlaying, '---sdsd');
   const [loading, setLoading] = useState(false); // 로딩창
 
   // 즐겨찾기 임시 스테이트
@@ -240,7 +235,6 @@ function PlayContents(props) {
   }, 2000);
 
   const ModalPage = () => {
-    console.log('인포버튼');
     handleView(isView);
   };
 
@@ -254,7 +248,7 @@ function PlayContents(props) {
   };
 
   const AudioPlay = () => {
-    console.log('재생버튼');
+    // console.log('재생버튼');
     document.getElementsByClassName('audio_origin')[0].play();
     document.getElementsByClassName('AudioBackGround')[0].style.display='flex'
 ;    handleResponsePlay(true);
@@ -262,7 +256,7 @@ function PlayContents(props) {
   };
 
   const AudioPause = () => {
-    console.log('정지버튼');
+    // console.log('정지버튼');
     document.getElementsByClassName('audio_origin')[0].pause();
     handleResponsePlay(false);
   };

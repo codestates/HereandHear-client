@@ -5,7 +5,6 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 function Mypage(props) {
-  console.log(props);
   const [nickName, setNickName] = useState('');
   const [password, setPassword] = useState('');
   const [email, setEmail] = useState('');
@@ -20,7 +19,6 @@ function Mypage(props) {
       )
       .then((res) => {
         setEmail(res.data.data.email);
-        console.log(email);
         // console.log(res.data);
       });
   }, []);
@@ -42,14 +40,12 @@ function Mypage(props) {
           },
         )
         .then((res) => {
-          console.log(res);
           SetErrMessage('회원정보가 수정 되었습니다.');
           setTimeout(()=>{
             props.history.push('/');
           },2000)
         })
         .catch((err) => {
-          console.log(err);
           if (err) {
             SetErrMessage('비밀번호를 확인해주세요');
           }
