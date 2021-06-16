@@ -4,6 +4,8 @@ import CategoryListContents from '../components/CategoryListContents';
 import CategoryList from '../components/CategoryList';
 import LoadingPage from '../components/LoadingPage';
 import axios from 'axios';
+import dotenv from 'dotenv';
+dotenv.config();
 
 function Category({isPlay,handlePlay ,isLogin}) {
   const [loading, setLoading] = useState(false);
@@ -15,7 +17,7 @@ function Category({isPlay,handlePlay ,isLogin}) {
     setCategory(result)
   }
   useEffect(()=>{
-      axios.post("https://ec2-18-117-241-8.us-east-2.compute.amazonaws.com:443/contents/category",{
+      axios.post(process.env.REACT_APP_BASE_URL + "/contents/category",{
           'category':category
       }).then((res)=>{
         console.log(res.data);

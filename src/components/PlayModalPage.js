@@ -3,6 +3,8 @@ import styled ,{keyframes}from 'styled-components';
 import axios from 'axios';
 // import UnderArrow from './UnderArrow';
 // import CategoryListContents from './CategoryListContents';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const PlayModal = styled.div`
   width: 100%;
@@ -141,7 +143,7 @@ function PlayModalPage({ handleView, isView,data }) {
 
  
   useEffect(()=>{
-    axios.get('https://ec2-18-117-241-8.us-east-2.compute.amazonaws.com:443/contents/'+data.state)
+    axios.get(process.env.REACT_APP_BASE_URL + '/contents/'+data.state)
     .then((res)=>{
     console.log(res);
      setRenderData(res.data)

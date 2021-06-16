@@ -5,6 +5,8 @@ import SeasonNow from '../components/SeasonNow';
 import UnderArrow from '../components/UnderArrow';
 import LocationNow from '../components/LocationNow';
 // import axios from 'axios';
+import dotenv from 'dotenv';
+dotenv.config();
 
 function Home({ isLogin ,handleResponseSuccess,handlePlay}) {
   // 스크롤 때문에 프롭스 내려주려 함.
@@ -24,6 +26,10 @@ function Home({ isLogin ,handleResponseSuccess,handlePlay}) {
   //     window.removeEventListener("scroll", onScroll);
   //   };
   // }, []);
+  // console.log('------ec2주소', process.env.REACT_APP_BASE_URL)
+  // console.log('------api key', process.env.REACT_APP_REST_API_KEY)
+  // console.log('------리다이렉트', process.env.REACT_APP_REDIRECT_URI)
+  // console.log('------weather api key', process.env.REACT_APP_WEATHER_API_KEY)
 
 
 

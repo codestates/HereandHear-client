@@ -2,6 +2,8 @@ import React, { useRef,useEffect,useState } from 'react';
 import Draggable from 'react-draggable';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
+import dotenv from 'dotenv';
+dotenv.config();
 
 function AudioBackGround(props) {
   // const [isPlaying, setIsPlaying] = useState(false);
@@ -17,7 +19,7 @@ function AudioBackGround(props) {
     if(history.location.state ===undefined){
         return false
     }else{
-      axios.get('https://ec2-18-117-241-8.us-east-2.compute.amazonaws.com:443/contents/'+ history.location.state)
+      axios.get(process.env.REACT_APP_BASE_URL + '/contents/'+ history.location.state)
       .then((res)=>{
       console.log(res,'---------------------audio');
        setRenderData(res.data)
