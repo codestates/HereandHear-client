@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import {withRouter} from'react-router-dom';
 import axios from 'axios';
+import dotenv from 'dotenv';
+dotenv.config();
 
 function Mypage(props) {
   console.log(props);
@@ -13,7 +15,7 @@ function Mypage(props) {
   useEffect(() => {
     axios
       .get(
-        'https://ec2-18-117-241-8.us-east-2.compute.amazonaws.com:443/user/' +
+        process.env.REACT_APP_BASE_URL + '/user/' +
           sessionStorage.getItem('id'),
       )
       .then((res) => {
@@ -31,7 +33,7 @@ function Mypage(props) {
     } else {
       axios
         .post(
-          'https://ec2-18-117-241-8.us-east-2.compute.amazonaws.com:443/user/update',
+          process.env.REACT_APP_BASE_URL + '/user/update',
           {
             nickname: nickName,
             email: email,

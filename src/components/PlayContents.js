@@ -4,6 +4,8 @@ import DummyDatas from '../documents/DummyDatas';
 import LoadingPage from '../components/LoadingPage';
 import {withRouter} from 'react-router-dom';
 import axios from 'axios';
+import dotenv from 'dotenv';
+dotenv.config();
 
 const BackAni = keyframes`
 0%{
@@ -217,7 +219,7 @@ function PlayContents(props) {
     console.log(data.state);
 
     useEffect(()=>{
-     axios.get('https://ec2-18-117-241-8.us-east-2.compute.amazonaws.com:443/contents/'+ data.state)
+     axios.get(process.env.REACT_APP_BASE_URL + '/contents/'+ data.state)
      .then((res)=>{
      console.log(res)
       setRenderData(res.data)
@@ -243,7 +245,7 @@ function PlayContents(props) {
   };
 
   const handleFavorite = (item) => {
-    axios.post('https://ec2-18-117-241-8.us-east-2.compute.amazonaws.com:443/favorite/addOrDelete',{
+    axios.post(process.env.BASE_URL + '/favorite/addOrDelete',{
       "userId":  sessionStorage.getItem('id'),
     "contentId": item,
     }).then((res) => {

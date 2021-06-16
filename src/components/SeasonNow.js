@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react';
 // import DummyDatas from '../documents/DummyDatas';
 import Recommends from './Recommends';
 import axios from 'axios';
+import dotenv from 'dotenv';
+dotenv.config();
 
 function SeasonNow({ handlePlay, seasonScroll }) {
   const [monthNow, setMonthNow] = useState(0);
@@ -11,7 +13,7 @@ function SeasonNow({ handlePlay, seasonScroll }) {
   useEffect(() => {
     axios
       .post(
-        'https://ec2-18-117-241-8.us-east-2.compute.amazonaws.com:443/contents/recommend',
+        process.env.REACT_APP_BASE_URL + '/contents/recommend',
         {
           month: month,
         },
@@ -29,7 +31,7 @@ function SeasonNow({ handlePlay, seasonScroll }) {
       <Recommends
         key={monthNow.id}
         id={monthNow.id}
-        introTitle={monthNow.subtitle}
+        introTitle={monthNow.seasonTitle}
         recImg={monthNow.imgPath}
         title={monthNow.title}
         place={monthNow.place}

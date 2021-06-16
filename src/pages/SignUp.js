@@ -1,5 +1,7 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
+import dotenv from 'dotenv';
+dotenv.config();
 
 function SignUp() {
   const [id, setId] = useState('');
@@ -97,7 +99,7 @@ function SignUp() {
     } else if (!checked) {
       setErrMessage('이용약관에 동의해주세요');
     } else {
-      await axios.post('https://ec2-18-117-241-8.us-east-2.compute.amazonaws.com:443/user/signup',{
+      await axios.post(process.env.REACT_APP_BASE_URL + '/user/signup',{
         email:id,
         password:password,
         username:nickName,

@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { useEffect } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import FavoriteContents from '../components/FavoriteContents';
-import DummyDatas from '../documents/DummyDatas';
+// import DummyDatas from '../documents/DummyDatas';
 import axios from 'axios';
+import dotenv from 'dotenv';
+dotenv.config();
 
 function Favorite(props) {
   const { isLogin, handlePlay, location } = props;
@@ -12,7 +14,7 @@ function Favorite(props) {
   useEffect(() => {
     axios
       .get(
-        'https://ec2-18-117-241-8.us-east-2.compute.amazonaws.com:443/favorite/list/' +
+        process.env.REACT_APP_BASE_URL + '/favorite/list/' +
           sessionStorage.getItem('id'),
       )
       .then((res) => {

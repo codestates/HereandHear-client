@@ -1,6 +1,8 @@
 import React from 'react'
 import axios from 'axios'
 import {withRouter} from 'react-router-dom'
+import dotenv from 'dotenv';
+dotenv.config();
 
 function FavoriteContents(props){
   console.log(props);
@@ -11,7 +13,7 @@ function FavoriteContents(props){
 
   const DeleteContent =() =>{
     // console.log(sessionStorage)
-    axios.post('https://ec2-18-117-241-8.us-east-2.compute.amazonaws.com:443/favorite/addOrDelete',{
+    axios.post(process.env.REACT_APP_BASE_URL + '/favorite/addOrDelete',{
       "userId":  sessionStorage.getItem('id'),
       "contentId": contentId,
     }, {

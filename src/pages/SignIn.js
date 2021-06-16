@@ -5,6 +5,8 @@ import axios from 'axios';
 import BackGroundVideo2 from '../video/background2.mp4';
 // import GoogleLogo from '../icon/google.png';
 // import Google from '../components/Google';
+import dotenv from 'dotenv';
+dotenv.config();
 
 function SignIn(props) {
   // console.log(props);
@@ -29,7 +31,7 @@ function SignIn(props) {
     } else {
       axios
         .post(
-          'https://ec2-18-117-241-8.us-east-2.compute.amazonaws.com:443/user/signin',
+          process.env.REACT_APP_BASE_URL + '/user/signin',
           {
             email: id,
             password: password,
@@ -51,12 +53,10 @@ function SignIn(props) {
   };
 
   const Kakaologin = () => {
-    const REST_API_KEY = '486e2bb9e00eb478cc738f9c518eb926';
-    const REDIRECT_URI = 'http://herehear.s3-website.ap-northeast-2.amazonaws.com/';
     // window.location.assign(`https://accounts.google.com/o/oauth2/v2/auth?scope=https%3A//www.googleapis.com/auth/drive.metadata.readonly&access_type=offline&include_granted_scopes=true&response_type=code&redirect_uri=http://localhost:3000&client_id=363735681458-sh03c6tq4t78465q3906gor08cfcrari.apps.googleusercontent.com`)
     window.location
       .assign(
-        `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`,
+        `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_REST_API_KEY}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=code`,
       )
       .then((res) => {
         console.log(res);
