@@ -13,8 +13,8 @@ function WeatherNow({ handlePlay, weatherScroll }) {
 
   useEffect(() => {
     const url =
-    "http://api.openweathermap.org/data/2.5/weather?q=seoul&appid=aa505028cd8fe7825b8749cb42a93954"
-    // `https://api.openweathermap.org/data/2.5/weather?q=seoul&appid=${process.env.REACT_APP_WEATHER_API_KEY}`;
+    // "http://api.openweathermap.org/data/2.5/weather?q=seoul&appid=aa505028cd8fe7825b8749cb42a93954"
+    `https://api.openweathermap.org/data/2.5/weather?q=seoul&appid=${process.env.REACT_APP_WEATHER_API_KEY}`;
 
     axios
       .get(url)

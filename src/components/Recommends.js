@@ -47,13 +47,13 @@ function Recommends(props) {
     <div className="recommends">
       {seasonScroll ? (
         <div className="recBtns" onClick={handleScrollTop}>
-          <img src='/icon/updown.png'></img>
+          <img src='/icon/updown.png' alt="alt"></img>
         </div>
       ) : (
         <div className="recBtns" onClick={handleScrollNext}>
           <img src='/icon/updown.png' style={{
             transform:'rotate(180deg)'
-          }}></img>
+          }} alt="alt"></img>
         </div>
       )}
 
