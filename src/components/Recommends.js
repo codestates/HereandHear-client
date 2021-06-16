@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import { withRouter } from 'react-router-dom';
 
 function Recommends(props) {
+  console.log(props)
   const {
     introTitle,
     recImg,
@@ -15,6 +16,7 @@ function Recommends(props) {
     locationScroll,
     history,
     id,
+    location
   } = props;
 
   // console.log(props);
@@ -47,11 +49,13 @@ function Recommends(props) {
     <div className="recommends">
       {seasonScroll ? (
         <div className="recBtns" onClick={handleScrollTop}>
-          Top
+          <img src='/icon/updown.png'></img>
         </div>
       ) : (
         <div className="recBtns" onClick={handleScrollNext}>
-          Next
+          <img src='/icon/updown.png' style={{
+            transform:'rotate(180deg)'
+          }}></img>
         </div>
       )}
 
@@ -65,7 +69,7 @@ function Recommends(props) {
           </div>
           <div className="recContents">
             <div className="recContentsTitle">{title}</div>
-            <div className="recContentsPlace">{place}</div>
+            {/* <div className="recContentsPlace">{place}</div> */}
             <div className="recContentsText">{text}</div>
           </div>
         </li>

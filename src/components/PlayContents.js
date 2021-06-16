@@ -156,7 +156,7 @@ const PauseBtn = styled.div`
   text-align: center;
   line-height: 100px;
   cursor: pointer;
-  background-image: url('/icon/pauseBtn.png');
+  background-image: url('/icon/pause.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -180,7 +180,7 @@ const InfoBtn = styled.div`
   height: 60px;
   border-radius: 50%;
   cursor: pointer;
-  background-image: url('/icon/info.svg');
+  background-image: url('/icon/info.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -196,7 +196,7 @@ const FavoriteBtn = styled.div`
   border-radius: 50%;
   cursor: pointer;
   margin-left: 20px;
-  background-image: url('/icon/bookmark1.svg');
+  background-image: url('/icon/bookmark.png');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -281,7 +281,6 @@ function PlayContents(props) {
                 <PlayBtnsContainer>
                   <InfoFavoriteOut>
                     <InfoBtn onClick={ModalPage}></InfoBtn>
-                  
                       <FavoriteBtn onClick={()=>handleFavorite(renderData.id)}></FavoriteBtn>
                   </InfoFavoriteOut>
                   <PlayBtneOut>

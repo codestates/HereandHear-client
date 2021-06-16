@@ -41,8 +41,10 @@ function Mypage(props) {
         )
         .then((res) => {
           console.log(res);
-          SetErrMessage('');
-          props.history.push('/');
+          SetErrMessage('회원정보가 수정 되었습니다.');
+          setTimeout(()=>{
+            props.history.push('/');
+          },2000)
         })
         .catch((err) => {
           console.log(err);

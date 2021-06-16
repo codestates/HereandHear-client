@@ -52,16 +52,17 @@ const ModalCloseBtn = styled.div`
   }
 `;
 
+
 const ModalSlide = keyframes`
-
 0%{
-  background-image: url('img/seoul.jpg');
-
-}33%{
-  background-image: url('img/seoul2.jpg');
-
-}67%{
-  background-image: url('img/seoul3.jpg');
+  background-size: 100%;
+  }
+  50%{
+    background-size: 130%
+  }
+  100%{
+    background-size: 100;
+  }
 }
 `
 
@@ -70,13 +71,12 @@ const TopImg = styled.div`
   height: 100%;
   border-radius: 30px;
   margin-bottom: 100px;
-  background-image: url('img/seoul.jpg');
+  background-image: url(${props => props.imgPath});
   background-repeat: no-repeat;
   background-size: cover;
-  animation: 15s infinite ${ModalSlide};
-  &:hover{
-    animation-play-state: paused;
-  }
+  background-position: center;
+  animation: ${ModalSlide} 50s ease infinite;
+
   /* & img {
     width: 100%;
     height: 100%;
@@ -154,7 +154,7 @@ function PlayModalPage({ handleView, isView,data }) {
       <PlayModal className="PlayModal">
         <PlayModalInside>
           <ModalCloseBtn onClick={ModalPage}>X</ModalCloseBtn>
-          <TopImg>
+          <TopImg imgPath={renderData.imgPath}>
             <Fillter></Fillter>
             {/* <img src="img/seoul.jpg" alt="이미지"></img> */}
           </TopImg>
