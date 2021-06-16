@@ -19,6 +19,7 @@ function Mypage(props) {
       )
       .then((res) => {
         setEmail(res.data.data.email);
+        setNickName(res.data.data.nickname);
         // console.log(res.data);
       });
   }, []);
@@ -95,7 +96,7 @@ function Mypage(props) {
           <li>
             <div className="NickNameIcon"></div>
             <input
-              placeholder="변경하실 NickName을 입력하세요"
+              value={nickName}
               onChange={handleNickName}
             ></input>
           </li>
