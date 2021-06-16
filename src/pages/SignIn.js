@@ -52,7 +52,7 @@ function SignIn(props) {
 
   const Kakaologin = () => {
     const REST_API_KEY = '486e2bb9e00eb478cc738f9c518eb926';
-    const REDIRECT_URI = 'http://localhost:3000';
+    const REDIRECT_URI = 'http://herehear.s3-website.ap-northeast-2.amazonaws.com/';
     // window.location.assign(`https://accounts.google.com/o/oauth2/v2/auth?scope=https%3A//www.googleapis.com/auth/drive.metadata.readonly&access_type=offline&include_granted_scopes=true&response_type=code&redirect_uri=http://localhost:3000&client_id=363735681458-sh03c6tq4t78465q3906gor08cfcrari.apps.googleusercontent.com`)
     window.location
       .assign(

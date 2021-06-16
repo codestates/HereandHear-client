@@ -18,6 +18,7 @@ function FavoriteContents(props){
       "Content-Type": "application/json"
     })
     .then(res => {
+      alert(res.data.message)
       window.location.reload()
     })
   }

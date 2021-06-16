@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 
 function SignUp() {
@@ -81,7 +82,7 @@ function SignUp() {
     setChecked(e.target.checked);
   };
 
-  const signUpBtn = () => {
+  const signUpBtn = async () => {
     if (!isEmail(id)) {
       // alert('이메일 형식에 맞게 작성해주세요');
       setErrMessage('사용하실 이메일을 넣어주세요');
@@ -96,7 +97,22 @@ function SignUp() {
     } else if (!checked) {
       setErrMessage('이용약관에 동의해주세요');
     } else {
-      alert('회원가입완료');
+      await axios.post('https://ec2-18-117-241-8.us-east-2.compute.amazonaws.com:443/user/signup',{
+        email:id,
+        password:password,
+        username:nickName,
+      }).then((res) => {
+        if(res.data){
+          setId('')
+          setNickName('')
+          setPassword('')
+          setPassword2('')
+          alert('회원가입완료')
+        }
+      }).catch((err) => {
+        alert('이미 존재하는 회원입니다.')
+      })
+      ;
     }
   };
 
