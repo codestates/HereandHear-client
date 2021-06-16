@@ -239,7 +239,7 @@ function PlayContents(props) {
   };
 
   const handleFavorite = (item) => {
-    axios.post(process.env.BASE_URL + '/favorite/addOrDelete',{
+    axios.post(process.env.REACT_APP_BASE_URL + '/favorite/addOrDelete',{
       "userId":  sessionStorage.getItem('id'),
     "contentId": item,
     }).then((res) => {
