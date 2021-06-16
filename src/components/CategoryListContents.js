@@ -62,6 +62,7 @@ function CategoryListContents({data,isPlay,handlePlay,history,isLogin}) {
   // console.log(history, "----list");
 
   const MovePlay = (item) =>{
+    console.log(item)
     history.push({pathname:'/play',
       state:item});
     handlePlay(true);
