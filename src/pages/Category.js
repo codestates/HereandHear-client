@@ -13,14 +13,12 @@ function Category({isPlay,handlePlay ,isLogin}) {
   const [category ,setCategory] =useState("remember")
 
   const handleCategory = (result)=> {
-    console.log(result)
     setCategory(result)
   }
   useEffect(()=>{
       axios.post(process.env.REACT_APP_BASE_URL + "/contents/category",{
           'category':category
       }).then((res)=>{
-        console.log(res.data);
         setdata(res.data);
         setLoading(true)
       })

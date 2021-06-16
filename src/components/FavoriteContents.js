@@ -5,14 +5,11 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 function FavoriteContents(props){
-  console.log(props);
   const {img, category, title, handlePlay,id:contentId,history} = props;
   // 이제 여기서 favorite 관련 db를 만든 후, 해당 정보가 있으면 그 정보를 렌더링 하면 된다. 현재는 더미 데이터를 만들어서 적용하였음.
-
   // 클릭을 하면 play 페이지로 넘어가게끔 하였고, handlePlay를 통해 플레이 상태를 true로 변경하여 재생창이 뜨게끔 하였음
 
   const DeleteContent =() =>{
-    // console.log(sessionStorage)
     axios.post(process.env.REACT_APP_BASE_URL + '/favorite/addOrDelete',{
       "userId":  sessionStorage.getItem('id'),
       "contentId": contentId,

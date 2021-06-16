@@ -26,7 +26,7 @@ function App() {
   //   id:'',
   //   nickname:''
   // })
-  console.log(isPlay);
+  // console.log(isPlay);
 
   useEffect(() => {
     if (sessionStorage.getItem('id') !== null) {
@@ -47,7 +47,6 @@ function App() {
     if (authorizationCode) {
       // authorization server로부터 클라이언트로 리디렉션된 경우, authorization code가 함께 전달됩니다.
       // ex) http://localhost:3000/?code=5e52fb85d6a1ed46a51f
-      console.log(authorizationCode);
       axios
         .post(
           process.env.REACT_APP_BASE_URL + '/kakao/accessToken',
@@ -56,7 +55,6 @@ function App() {
           },
         )
         .then((res) => {
-          console.log(res.data);
           sessionStorage.setItem('accesstoken', res.data.access_token);
           handleResponseSuccess();
         });

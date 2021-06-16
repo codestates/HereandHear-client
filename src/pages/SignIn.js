@@ -59,7 +59,6 @@ function SignIn(props) {
         `https://kauth.kakao.com/oauth/authorize?client_id=${process.env.REACT_APP_REST_API_KEY}&redirect_uri=${process.env.REACT_APP_REDIRECT_URI}&response_type=code`,
       )
       .then((res) => {
-        console.log(res);
       })
       .catch((err) => {
         console.error(err);

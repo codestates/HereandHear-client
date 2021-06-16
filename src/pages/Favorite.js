@@ -8,7 +8,11 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 function Favorite(props) {
-  const { isLogin, handlePlay, location } = props;
+  const {
+    // isLogin,
+    handlePlay,
+    // location
+  } = props;
   const [render, setRender] = useState('');
 
   useEffect(() => {
@@ -18,13 +22,11 @@ function Favorite(props) {
           sessionStorage.getItem('id'),
       )
       .then((res) => {
-        console.log(res.data);
         setRender(res.data);
-        console.log(render);
       });
   }, []);
 
-  const userInfo = true;
+  // const userInfo = true;
 
   if (render.length === 0) {
     return (

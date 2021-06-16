@@ -4,7 +4,7 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import styled, { keyframes } from 'styled-components';
 import {withRouter} from 'react-router-dom';
-import Play from '../pages/Play';
+// import Play from '../pages/Play';
 
 const SlideLoad = keyframes`
 0%{
@@ -59,10 +59,8 @@ const Image = styled.img`
 
 
 function CategoryListContents({data,isPlay,handlePlay,history,isLogin}) {
-  // console.log(history, "----list");
 
   const MovePlay = (item) =>{
-    console.log(item)
     history.push({pathname:'/play',
       state:item});
     handlePlay(true);

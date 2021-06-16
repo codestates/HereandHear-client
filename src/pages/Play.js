@@ -6,11 +6,9 @@ import SeasonNow from '../components/SeasonNow';
 import WeatherNow from '../components/WeatherNow';
 
 function Play(props) {
-  console.log(props);
 
   const { handlePlay, isPlay, handleResponsePlay, isPlaying, location } = props;
 
-  console.log(props.location);
   const [isView, setView] = useState(false); //모달창 스테이트 관리
 
   const handleView = (result) => { // 모달창 관리
